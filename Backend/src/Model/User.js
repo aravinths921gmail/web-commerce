@@ -1,12 +1,7 @@
-const mongoose = required("mongoose");
+const mongoose = require("mongoose");
 
-const logincollection = mongoose.Schema(
+const User = new mongoose.Schema(
     {
-        name : {
-            type : String,
-            required : true,
-        },
-
         email : {
             type : String,
             required : true,
@@ -23,4 +18,4 @@ const logincollection = mongoose.Schema(
         }
     })
 
-module.exports = mongoose.model("Userdata", User);
+module.exports = mongoose.model("Userdata", User); //Userdata is the db collection name in mdb. User is a model name used for saving data in schema.

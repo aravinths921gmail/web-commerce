@@ -1,14 +1,16 @@
 const express = require("express"); //1st
 const authroute = require("./src/routes/auth.route");
 
-const App = express(); //2nd
 
-App.use(express.json()); //3rd
 
-App.use("/api", authroute) 
+const app = express(); //2nd
 
-App.get("/", (req, res) => {
+app.use(express.json()); //3rd
+
+app.use("/api", authroute) 
+
+app.get("/", (req, res) => {
   res.send("Server is working");
 });
 
-module.exports = App; //4th
+module.exports = app; //4th
