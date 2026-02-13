@@ -1,5 +1,6 @@
 const User = require("../Model/User");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
 
 //Authentication:
@@ -26,37 +27,38 @@ const validateEmail = (email) =>
 }
 
 // PASSWORD VALIDATION
-const validatePassword = (password) => {
-  const passwordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$/;
+// const validatePassword = (password) => {
+//   const passwordRegex =
+//     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$/;
 
 
-  if (!password) {
-    return "Password is required";
-  }
+//   if (!password) {
+//     return "Password is required";
+//   }
 
-  if (password.length < 8) {
-    return "Password must be at least 8 characters";
-  }
+//   if (password.length < 8) {
+//     return "Password must be at least 8 characters";
+//   }
 
-  if (password.length > 30) {
-    return "Password must not exceed 30 characters";
-  }
+//   if (password.length > 30) {
+//     return "Password must not exceed 30 characters";
+//   }
 
-  if (!passwordRegex.test(password)) {
-    return "Password must include uppercase, lowercase, number, and symbol";
-  }
+//   if (!passwordRegex.test(password)) {
+//     return "Password must include uppercase, lowercase, number, and symbol";
+//   }
 
-  return null;
-};
+//   return null;
+// };
 
 
 const Loginpost = async (req, res) => {
     let { email, password, role } = req.body;
+    
 
     try {
 
-        if (email === "" || password === "") {
+        if (!email || !password) {
             return res.json("Email and password is needed");
         }   
         
@@ -66,20 +68,25 @@ const Loginpost = async (req, res) => {
             return res.status(400).json({message : emailError});
         }
 
-        const passwordError = validatePassword(password);
+        // const passwordError = validatePassword(password);
 
-        if(passwordError){
-            return res.status(400).json({message : passwordError});
-        }
+        // if(passwordError){
+        //     return res.status(400).json({message : passwordError});
+        // }
 
         const duplicatedata = await User.findOne({ email: req.body.email });
 
         if (!duplicatedata) { return res.json("Invalid credentials") }
 
+        const confirmPassword = await bcrypt.compare(req.body.password, duplicatedata.password);
+
+        if(!confirmPassword) return res.json("Password not match");
+
         
     //JWT (should be create here)
     const token = jwt.sign(
         {
+            id: duplicatedata._id,
             email: duplicatedata.email,
             role : duplicatedata.role
         },
