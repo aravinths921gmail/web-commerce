@@ -1,5 +1,5 @@
 const express = require("express"); //1st
-const authroute = require("./src/routes/auth.route");
+const authroute = require("./routes/auth.route");
 
 
 
