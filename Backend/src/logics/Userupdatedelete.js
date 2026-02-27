@@ -4,10 +4,10 @@ const updateUser = async(req, res) =>
 {
     try{
         if(req.details.role === "admin"){
-            return res.json({message : "Can't delete another admin"})
+            return res.json({message : "Can't delete change admin"})
         }
         else{
-            const updateduserData = await User.findByIdAndUpdate(req.params.id, req.body, {new : "true"});
+            const updateduserData = await User.findByIdAndUpdate(req.params.id, req.body, {new : true});
             if(!updateduserData) {return res.status(404).json({error : "User not found"})};
         }
         
@@ -21,16 +21,25 @@ const updateUser = async(req, res) =>
 }
 
 //Deleting that fetched user: 
-const deleteUser = async(req, res) =>
-{
-    try{
-        const deleteduserData = await User.findByIdAndDelete(req.params.id);
-        if (!deleteduserData){return res.status(404).json({error : "User not found"})};
+const deleteUser = async (req, res) => {
+    try {
+        const targetUser = await User.findById(req.params.id);
 
-        res.json({message : "deleted successfully", product : deleteduserData.toObject()});
+        if (!targetUser) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        if (targetUser.role === "admin") {
+            return res.status(403).json({ error: "Cannot delete another admin" });
+        }
+
+        await User.findByIdAndDelete(req.params.id);
+
+        res.json({ message: "User deleted successfully" });
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
-
-    catch(err){res.status(500).json(err.message)};
-}
+};
 
 module.exports = {updateUser, deleteUser};

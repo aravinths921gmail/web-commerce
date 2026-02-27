@@ -73,7 +73,8 @@ const userpost = async (req, res) => {
 
             try {     //Have to use try everywhere when asychronous need
                 const email = req.body.email.toLowerCase();
-
+                
+                
                 const duplicateemail = await User.findOne({ email });
 
                 if (duplicateemail)

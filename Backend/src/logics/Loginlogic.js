@@ -53,7 +53,7 @@ const validateEmail = (email) =>
 
 
 const Loginpost = async (req, res) => {
-    let { email, password, role } = req.body;
+    let { email, password, role, _id} = req.body;
     
 
     try {
@@ -68,6 +68,7 @@ const Loginpost = async (req, res) => {
             return res.status(400).json({message : emailError});
         }
 
+
         // const passwordError = validatePassword(password);
 
         // if(passwordError){
@@ -77,6 +78,7 @@ const Loginpost = async (req, res) => {
         const duplicatedata = await User.findOne({ email: req.body.email });
 
         if (!duplicatedata) { return res.json("Invalid credentials") }
+
 
         const confirmPassword = await bcrypt.compare(req.body.password, duplicatedata.password);
 
@@ -90,8 +92,8 @@ const Loginpost = async (req, res) => {
             email: duplicatedata.email,
             role : duplicatedata.role
         },
-        "secretKey",
-        {expiresIn: "1h"}
+        process.env.JWT_SECRET,
+        { expiresIn: process.env.JWT_EXPIRE }
     )
 
     return res.status(200).json({message: "Login successful", token});

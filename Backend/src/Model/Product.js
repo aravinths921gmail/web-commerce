@@ -4,13 +4,13 @@ const Product = new mongoose.Schema(
     {
     Name : {
         type : String,
-        require : true,
+        required : true,
     },
 
     description : 
     {
         type : String,
-        require : true,
+        required : true,
     },
 
     price : 
@@ -24,7 +24,7 @@ const Product = new mongoose.Schema(
     {
         type : Number,
         required : true,
-        min: 0
+        min: 1
     },
 
     // images :
@@ -32,6 +32,14 @@ const Product = new mongoose.Schema(
     //     type : String,
     //     required : true,
     // },
+
+     category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Category",   // ← connects to Category collection
+    required: true
+    },
+    isActive: { type: Boolean, default: true },
+
 
     createdBy :
     {

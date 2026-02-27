@@ -10,7 +10,7 @@ const ProductCreate = async(req, res) =>{
 
     let product = new Product({...req.body, createdBy: req.details.id});
 
-    if(!Name?.trim() || !description?.trim()){
+    if(!Name || !description || !price || !stock || !category){
        return res.json({message : "Product shouldn't be empty"});
     }
 

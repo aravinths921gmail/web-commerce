@@ -1,25 +1,14 @@
 const Product = require("../Model/Product")
 
-const productFetch = async(req, res) =>
-{
-    try{
-        if(req.details.role === "admin")
-            {
-                const fetchedProduct = await Product.find();
-                res.status(200).json(fetchedProduct);
-            }
-        else{
-                const fetchedProduct = await Product.find();
-                res.status(200).json(fetchedProduct);
-            }
-        
+const productFetch = async (req, res) => {
+    try {
+        const fetchedProduct = await Product.find().populate("category");
+        res.status(200).json(fetchedProduct);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
+};
 
-    catch(err)
-    {
-        res.status(500).json(err.message);
-    }
-}
 
 
 //Updating that fetched product: 

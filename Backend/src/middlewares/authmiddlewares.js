@@ -32,6 +32,12 @@ const Admin = (req, res, next) => {
   next();
 };
 
+const user = (req, res, next) => {
+    if (req.details.role !== "user"){
+        return res.status(403).json({message : "Users only"});
+    }
+    next();
+}
 
 //We can create this profile logic as separate file too with admin logic(fetching user data file)
  const Profile = async(req, res) => {
@@ -59,4 +65,4 @@ const Admin = (req, res, next) => {
 
 
 
-module.exports = { verifyToken, Profile, Admin };
+module.exports = { verifyToken, Profile, Admin, user};
