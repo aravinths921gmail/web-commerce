@@ -18,7 +18,7 @@ const paymentFailure = async (req, res) => {
     if (!order) return res.status(404).json({ message: "Order not found" });
 
     order.payment.status = "failed";
-    order.orderStatus = "cancelled";
+    order.orderStatus = "placed";
     order.statusHistory.push({ status: "cancelled" });
 
     await order.save();

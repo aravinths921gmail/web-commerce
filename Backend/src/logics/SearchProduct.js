@@ -6,17 +6,17 @@ const searchProducts = async (req, res, next) => {
 
     const query = {};
 
-    // 🔍 Search by product name
+    // Search by product name
     if (keyword) {
     const normalizedKeyword = keyword.replace(/\s+/g, "").toLowerCase();// split by spaces
   
     query.Name = { $regex: new RegExp(normalizedKeyword.split("").join("\\s*"), "i") };
 }
 
-    // 📂 Filter by category
+    //  Filter by category
     if (category) {query.category = category};
 
-    // 💰 Filter by price
+    //  Filter by price
     if (minPrice || maxPrice) {
       query.price = {};
       if (minPrice) query.price.$gte = Number(minPrice);

@@ -1,0 +1,5 @@
+jQuery(document).ready(function($){window.xoo_sl_localize.sendUserInfo=function(userInfo,$button){if(!userInfo.email){console.log(userInfo);return}
+var $easyLoginSection=$button.parents('.xoo-el-section');$.ajax({url:xoo_sl_localize.adminurl,type:'POST',data:{action:'xoo_sl_fb_data',userInfo:userInfo},success:function(response){if(response.message){$('.xoo-sl-notice-container').html(response.message)}
+if(response.success==="true"){var redirectTo=xoo_sl_localize.redirect_to;if($easyLoginSection.length&&$easyLoginSection.find('input[name="xoo_el_redirect"]').length){redirectTo=$easyLoginSection.find('input[name="xoo_el_redirect"]').val()}
+window.location=redirectTo}
+$(document).trigger('xoo_sl_processing_userinfo',[response])}})}})

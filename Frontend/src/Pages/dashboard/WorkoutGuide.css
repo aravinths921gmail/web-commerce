@@ -1,0 +1,320 @@
+/* ----------------- Container ----------------- */
+.workout-wrapper {
+  max-width: 700px;
+  margin: 80px auto; /* large top/bottom margin */
+  padding: 30px 40px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+  transition: all 0.4s ease;
+}
+
+/* Dark Mode Container */
+.dark .workout-wrapper {
+  background: #000;
+  color: #fff;
+  border: 2px solid #e2e2e2;
+}
+
+.dark .workout-wrapper * {
+  color: #fff !important;
+}
+
+/* ----------------- Heading ----------------- */
+.workout-wrapper h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 2em;
+  letter-spacing: 0.5px;
+}
+
+.subtext {
+  text-align: center;
+  font-size: 0.95em;
+  color: #777;
+  margin-bottom: 25px;
+}
+
+.dark .workout-wrapper .subtext {
+  color: #000000;
+}
+
+/* ----------------- Body Part Card ----------------- */
+.body-part-card {
+  margin-bottom: 18px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+}
+
+.dark .workout-wrapper .body-part-card {
+  border-color: #dadada;
+  background: #111;
+}
+
+/* ----------------- Body Part Header ----------------- */
+.body-part-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: #f7f7f7;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  border-bottom: 1px solid #ddd;
+}
+
+.dark .workout-wrapper .body-part-header {
+  background: #111;
+  border-bottom-color: #cacaca;
+  color: #fff;
+}
+
+.body-part-header:hover {
+  background: #eaeaea;
+}
+
+.dark .workout-wrapper .body-part-header:hover {
+  background: #ff8800;
+}
+
+/* ----------------- Arrow Rotation ----------------- */
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+.arrow.open {
+  transform: rotate(90deg);
+}
+
+/* ----------------- Exercise List ----------------- */
+.exercise-list {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  transition: max-height 0.5s ease, padding 0.3s ease;
+}
+
+.exercise-list.active {
+  max-height: 1500px;
+  padding: 15px 20px;
+}
+
+/* ----------------- Exercise Card ----------------- */
+.exercise-card {
+  background: #fafafa;
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.dark .workout-wrapper .exercise-card {
+  background: #222;
+
+  color: #fff;
+}
+
+.exercise-card:hover {
+  transform: translateY(-5px);
+  border: 1px solid white;
+}
+
+/* ----------------- Equipment Text ----------------- */
+.equipment {
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 5px;
+}
+
+.dark .workout-wrapper .equipment {
+  color: #ddd;
+}
+
+/* ----------------- Mini Product Cards (Text Only) ----------------- */
+.mini-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 120px;
+  text-align: center;
+  padding: 10px;
+  background: #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.dark .workout-wrapper .mini-card {
+  background: #333;
+  border-color: #ff8c00;
+  color: #fff;
+  box-shadow: 0 0 5px rgba(255, 165, 0, 0.5);
+}
+
+.mini-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 12px rgba(255, 165, 0, 0.7);
+}
+
+.mini-card p {
+  font-size: 0.85em;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: inherit;
+}
+
+.mini-card button {
+  font-size: 0.75em;
+  padding: 5px 8px;
+  border-radius: 5px;
+  border: none;
+  background: #ff7a00;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.mini-card button:hover {
+  background: #ffa500;
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
+}
+
+/* ----------------- Accordion Animation ----------------- */
+.exercise-list.active .exercise-card {
+  animation: fadeSlide 0.5s ease forwards;
+}
+
+@keyframes fadeSlide {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ----------------- Buttons ----------------- */
+button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+
+/* ---------- MOBILE (≤ 425px) ---------- */
+@media (max-width: 425px) {
+
+  .workout-wrapper {
+    max-width: 95%;
+    margin: 40px auto;
+    padding: 20px 15px;
+    border-radius: 12px;
+  }
+
+  .workout-wrapper h2 {
+    font-size: 1.4em;
+  }
+
+  .subtext {
+    font-size: 0.8em;
+  }
+
+  .body-part-header {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .exercise-list.active {
+    padding: 10px 12px;
+  }
+
+  .exercise-card {
+    padding: 10px;
+    margin-bottom: 8px;
+  }
+
+  .exercise-card strong {
+    font-size: 13px;
+  }
+
+  .equipment {
+    font-size: 0.75em;
+  }
+
+  .arrow {
+    font-size: 12px;
+  }
+}
+
+
+/* ---------- TABLET (426px – 768px) ---------- */
+@media (min-width: 426px) and (max-width: 768px) {
+
+  .workout-wrapper {
+    max-width: 85%;
+    margin: 60px auto;
+    padding: 25px 25px;
+  }
+
+  .workout-wrapper h2 {
+    font-size: 1.7em;
+  }
+
+  .subtext {
+    font-size: 0.9em;
+  }
+
+  .body-part-header {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  .exercise-list.active {
+    padding: 12px 15px;
+  }
+
+  .exercise-card {
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .exercise-card strong {
+    font-size: 14px;
+  }
+
+  .equipment {
+    font-size: 0.85em;
+  }
+
+  .arrow {
+    font-size: 14px;
+  }
+}
+
+
+/* ---------- SMALL LAPTOP (769px – 1024px) ---------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .workout-wrapper {
+    max-width: 75%;
+    margin: 70px auto;
+    padding: 30px 30px;
+  }
+
+  .workout-wrapper h2 {
+    font-size: 1.9em;
+  }
+
+  .body-part-header {
+    font-size: 15px;
+  }
+
+  .exercise-card strong {
+    font-size: 15px;
+  }
+
+  .equipment {
+    font-size: 0.9em;
+  }
+}

@@ -57,7 +57,7 @@ const orderSchema = new mongoose.Schema(
     cartId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      unique: true
+      index: true
     },
     
     userId: {

@@ -48,61 +48,56 @@ const validatePassword = (password) => {
 };
 
 const userpost = async (req, res) => {
-
     let { email, password, role } = req.body;
-    const hashpassword = await bcrypt.hash(req.body.password, 7);
 
     try {
+        // Required fields
         if (!email || !password) {
             return res.status(400).json({ message: "Email and password are required" });
         }
 
-        else {
-
-            const emailerror = validateEmail(email);
-            if (emailerror) {
-                return res.status(400).json({ message: emailerror });
-            }
-
-            const passworderror = validatePassword(password);
-            if (passworderror) {
-                return res.status(400).json({ message: passworderror });
-            }
-
-
-
-            try {     //Have to use try everywhere when asychronous need
-                const email = req.body.email.toLowerCase();
-                
-                
-                const duplicateemail = await User.findOne({ email });
-
-                if (duplicateemail)
-                    return res.status(409).json({ message: "User already exists" });
-
-                let data = new User({ email, password: hashpassword, role }) //new must
-
-                const savedData = await data.save();
-
-                res.status(201).json(savedData);
-
-                console.log(req.body);
-            }
-            catch (err) {
-                
-                res.json(err.message);
-            }
-
-
+        // Email validation
+        const emailerror = validateEmail(email);
+        if (emailerror) {
+            return res.status(400).json({ message: emailerror });
         }
-    }
 
-    catch (error) {
+        // Password validation
+        const passworderror = validatePassword(password);
+        if (passworderror) {
+            return res.status(400).json({ message: passworderror });
+        }
+
+        // Normalize email
+        email = email.toLowerCase();
+
+        // Default role to 'user' if invalid
+        if (!role || !["user", "admin"].includes(role)) role = "user";
+
+        // Check for duplicate
+        const duplicateemail = await User.findOne({ email });
+        if (duplicateemail)
+            return res.status(409).json({ message: "User already exists" });
+
+        // Hash password AFTER validation
+        const hashpassword = await bcrypt.hash(password, 7);
+
+        // Save user
+        let data = new User({ email, password: hashpassword, role });
+        const savedData = await data.save();
+
+        res.status(201).json({
+            _id: savedData._id,
+            email: savedData.email,
+            role: savedData.role,
+        });
+
+        console.log(req.body);
+    } catch (error) {
         console.error(error);
         res.status(500).json({ message: error.message });
     }
+};
 
-}
 
 module.exports = { userpost };
-

@@ -27,11 +27,7 @@ const Product = new mongoose.Schema(
         min: 1
     },
 
-    // images :
-    // {
-    //     type : String,
-    //     required : true,
-    // },
+     images: [{ type: String }], // store array of image paths
 
      category: {
     type: mongoose.Schema.Types.ObjectId,

@@ -1,0 +1,258 @@
+/* Modal form wrapper */
+.signupForm {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 15px;
+  font-family: Arial, sans-serif;
+  color: black;
+  text-align: center;
+}
+
+/* Dark mode */
+:global(.dark) :global(.modal-content) {
+  background-color: #121212 !important;
+  color: white;
+}
+
+/* Input wrapper */
+.inputGroupCustom {
+  position: relative;
+  width: 100%;
+}
+
+/* Buttons container */
+.buttonList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Inputs */
+.signupForm input {
+  width: 100%;
+  padding: 10px 40px 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  color: black;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.signupForm input:focus {
+  border-color: #ff8c00;
+}
+
+/* Password wrapper */
+.passwordGroup {
+  position: relative;
+  width: 100%;
+}
+
+/* Eye icon */
+.eyeIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #555;
+}
+
+.eyeIcon:hover {
+  color: #ff8c00;
+}
+
+/* Buttons */
+.signupBtn,
+.loginBtn {
+  padding: 8px 16px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: black;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Create Account button */
+.signupBtn {
+  background-color: #ff9900;
+}
+
+.signupBtn:hover {
+  background-color: #c26b00;
+  color: white;
+}
+
+/* Login Instead button */
+.loginBtn {
+  background-color: #ff9900;
+  border: 1px solid #ccc;
+}
+
+.loginBtn:hover {
+  background-color: #c26b00;
+  color: white;
+  border-color: #ff8c00;
+}
+
+/* Error message */
+.errorMsg {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Backend msg */
+.backend {
+  margin-top: 8px;
+}
+
+/* ---------- MODAL SIZE CONTROL ---------- */
+
+/* Default (desktop) */
+:global(.modal-dialog) {
+  max-width: 400px;
+}
+
+/* Reduce internal spacing */
+:global(.modal-body) {
+  padding: 12px 16px;
+}
+
+
+/* ---------- EXTRA SMALL PHONES (≤ 320px) ---------- */
+@media (max-width: 320px) {
+
+  :global(.modal-dialog) {
+    max-width: 260px !important;
+    margin: 10px auto;
+  }
+
+  .signupForm {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .signupForm input {
+    font-size: 12px;
+    padding: 8px 30px 8px 10px;
+  }
+
+  .eyeIcon {
+    right: 8px;
+    font-size: 12px;
+  }
+
+  .signupBtn,
+  .loginBtn {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .errorMsg {
+    font-size: 11px;
+  }
+
+  :global(.modal-title) {
+    font-size: 16px;
+  }
+}
+
+
+/* ---------- SMALL PHONES (≤ 375px) ---------- */
+@media (max-width: 375px) {
+
+  :global(.modal-dialog) {
+    max-width: 280px !important;
+  }
+
+  .signupForm {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .signupForm input {
+    font-size: 13px;
+    padding: 9px 32px 9px 10px;
+  }
+
+  .signupBtn,
+  .loginBtn {
+    font-size: 13px;
+    padding: 7px;
+  }
+
+  .errorMsg {
+    font-size: 12px;
+  }
+}
+
+
+/* ---------- MOBILE (≤ 425px) ---------- */
+@media (max-width: 425px) {
+
+  :global(.modal-dialog) {
+    max-width: 300px !important;
+  }
+
+  .signupForm {
+    padding: 14px;
+  }
+
+  .signupForm input {
+    font-size: 14px;
+  }
+
+  .signupBtn,
+  .loginBtn {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  :global(.modal-content) {
+    border-radius: 10px;
+  }
+}
+
+
+/* ---------- TABLET (426px – 768px) ---------- */
+@media (min-width: 426px) and (max-width: 768px) {
+
+  :global(.modal-dialog) {
+    max-width: 350px;
+  }
+
+  .signupForm {
+    padding: 18px;
+  }
+
+  .signupForm input {
+    font-size: 15px;
+  }
+
+  .signupBtn,
+  .loginBtn {
+    max-width: 250px;
+    font-size: 14px;
+  }
+}
+
+
+/* ---------- SMALL LAPTOP (769px – 1024px) ---------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  :global(.modal-dialog) {
+    max-width: 380px;
+  }
+
+  .signupBtn,
+  .loginBtn {
+    max-width: 320px;
+  }
+}

@@ -1,34 +1,37 @@
-const Product = require("../Model/Product");
-const User = require("../Model/User");
+const Product = require('../Model/Product');
 
+const ProductCreate = async (req, res) => {
+  try {
+    console.log("req.body:", req.body);
+    console.log("req.files:", req.files);
 
+    const { Name, description, price, stock, category } = req.body;
 
-const ProductCreate = async(req, res) =>{
-    try{
-    // res.json(req.body);
-        let {Name, description, price, stock, createdBy} = req.body;
-
-    let product = new Product({...req.body, createdBy: req.details.id});
-
-    if(!Name || !description || !price || !stock || !category){
-       return res.json({message : "Product shouldn't be empty"});
+    if (!Name || !description || !price || !stock || !category) {
+      return res.status(400).json({ message: "All product fields are required" });
     }
 
-    else{
-        const savedProduct = await product.save();
+    const createdBy = req.user?.id || req.details?.id;
 
-        return res.status(201).json(savedProduct); 
-    }
-}
+    const images = req.files.map(file => file.filename);
 
-    catch(err)
-    {
-     return res.status(500).json({message : err.message});
-    }
+    const product = new Product({
+      Name,
+      description,
+      price,
+      stock,
+      category,
+      createdBy,
+      images,
+    });
 
-}
+    const savedProduct = await product.save();
+    return res.status(201).json(savedProduct);
+  } catch (err) {
+    console.error("Product creation error:", err.message);
+    return res.status(500).json({ message: "Server error: " + err.message });
+  }
+};
 
+module.exports = {ProductCreate}
 
-
-
-module.exports = {ProductCreate};

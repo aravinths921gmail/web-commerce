@@ -4,6 +4,7 @@ const App = require("../Backend/src/app");
 const connectdb = require("./src/config/mdb");
 const redis = require("./src/config/redis");
 
+
 (async () => {
   try {
     await connectdb(); //Only after db connect, server starts listen. If server runs when db fails, hacker send ddos login data to crash server
@@ -12,3 +13,4 @@ const redis = require("./src/config/redis");
     console.error(err.message);
   }
 })();
+

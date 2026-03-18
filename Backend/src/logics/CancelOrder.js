@@ -9,6 +9,10 @@ const CancelOrder = async (req, res) => {
         const order = await Order.findOne({ _id: orderid, userId });
         if (!order) return res.status(404).json({ message: "Order not found" });
 
+        if (order.orderStatus === "cancelled") {
+            return res.status(400).json({ message: "Order already cancelled" });
+        }
+
         if (["shipped", "delivered"].includes(order.orderStatus)) {
             return res.status(400).json({ message: "Cannot cancel shipped order" })
         };
@@ -20,19 +24,19 @@ const CancelOrder = async (req, res) => {
             });
         }
 
-        
-    // Refund if paid
-    if (order.payment.status === "paid") {
-      order.payment.status = "refunded";
-      order.payment.refundedAt = new Date();
-    }
 
-    order.orderStatus = "cancelled";
-    order.statusHistory.push({ status: "cancelled" });
+        // Refund if paid
+        if (order.payment.status === "paid") {
+            order.payment.status = "refunded";
+            order.payment.refundedAt = new Date();
+        }
 
-    await order.save();
+        order.orderStatus = "cancelled";
+        order.statusHistory.push({ status: "cancelled" });
 
-    res.json({ message: "Order cancelled", order });
+        await order.save();
+
+        res.json({ message: "Order cancelled", order });
     }
 
 

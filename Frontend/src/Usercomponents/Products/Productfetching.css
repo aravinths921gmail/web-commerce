@@ -1,0 +1,464 @@
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 40px;
+  transition: background 0.3s ease;
+}
+
+.products-container.dark {
+  background-color: #000000;
+}
+
+.product-card {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  border: 0.5px solid rgb(226, 226, 226) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  position: relative; /* needed for overlay */
+  overflow: hidden;
+}
+
+.product-card::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to top, orange, transparent);
+  transition: height 0.4s ease;
+  z-index: 0; /* behind content */
+}
+
+.product-card:hover::before {
+  height: 100%;
+}
+
+.wishheart {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;          /* always show hand cursor */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wishheart i {
+  pointer-events: none;     /* allows click to pass through to button */
+  transition: color 0.2s;
+  font-size: 1.2rem;        /* optional size */
+  color: #bbbbbb;
+}
+
+.wishheart i.liked {
+  color: rgb(172, 2, 2);
+}
+
+.heart-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.wishheart {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer; /* pointer ensures hand cursor */
+}
+
+.wishheart i {
+  cursor: pointer; /* pointer for icon */
+}
+
+/* Bring content above overlay */
+.product-card .card-body,
+.product-card img {
+  position: relative;
+  z-index: 1;
+}
+
+.product-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.dark .product-card::before {
+  background: linear-gradient(to top, #ff7a00, transparent);
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+   
+}
+
+.dark-card {
+  background-color: #000000;
+  color: white;
+  border: none;
+}
+
+.product-image {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product-title,
+.product-desc,
+.product-price,
+.product-category {
+  transition: color 0.3s ease;
+}
+
+.product-desc {
+  white-space: nowrap;    
+  overflow: hidden;          
+  text-overflow: ellipsis;    
+  display: block;
+}
+
+.products-container.dark .product-title,
+.products-container.dark .product-desc,
+.products-container.dark .product-price,
+.products-container.dark .product-category {
+  color: #ffffff;
+}
+
+.product-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-cart,
+.btn-enquiry {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.separator{
+  margin-bottom: 20px;
+}
+
+.btn-cart {
+  background-color: orange;
+  color: white;
+}
+
+.btn-cart:hover {
+  background-color: darkorange;
+  transform: scale(1.05);
+}
+
+.btn-enquiry {
+  background-color: #555;
+  color: white;
+}
+
+.btn-enquiry:hover {
+  background-color: #888;
+  transform: scale(1.05);
+}
+
+
+/* Skeleton Base */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #e0e0e0;
+  border-radius: 6px;
+}
+
+/* Shimmer Animation */
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150px;
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(300px);
+  }
+}
+
+/* Skeleton Layout */
+.skeleton-image {
+  height: 200px;
+  width: 100%;
+}
+
+.skeleton-body {
+  padding: 15px;
+}
+
+.skeleton-title {
+  height: 18px;
+  width: 70%;
+  margin-bottom: 10px;
+}
+
+.skeleton-text {
+  height: 14px;
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+.skeleton-price {
+  height: 18px;
+  width: 40%;
+  margin-bottom: 10px;
+}
+
+.skeleton-button {
+  height: 35px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+@keyframes heartPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+
+.heart-pop {
+  animation: heartPop 0.3s ease;
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 360px) {
+  .products-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 products per row */
+    gap: 6px; /* tiny gap */
+    padding: 6px; /* compact padding */
+  }
+
+  .product-card {
+    width: 100%;
+    border-radius: 6px;
+    font-size: 0.65rem; /* very small base font */
+    padding: 4px;
+  }
+
+  .product-image {
+    height: 90px; /* very small image */
+  }
+
+  .product-title {
+    font-size: 0.65rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .product-desc {
+    display: none; /* hide description */
+  }
+
+  .product-price {
+    font-size: 0.7rem;
+  }
+
+  .product-category {
+    font-size: 0.6rem;
+  }
+
+  .product-buttons {
+    gap: 2px;
+  }
+
+  .btn-cart,
+  .btn-enquiry {
+    font-size: 0.55rem; /* tiny buttons */
+    padding: 1px 3px;
+  }
+
+  .heart-container {
+    top: 2px;
+    right: 2px;
+  }
+
+  .wishheart i {
+    font-size: 0.8rem; /* smaller heart */
+  }
+
+  /* Adjust skeleton loaders to match tiny cards */
+  .skeleton-image {
+    height: 90px;
+  }
+
+  .skeleton-title,
+  .skeleton-price,
+  .skeleton-text,
+  .skeleton-button {
+    height: 8px;
+    margin-bottom: 4px;
+  }
+}
+
+/* ---------- 375px (same compact style as 320, slightly relaxed) ---------- */
+@media screen and (min-width: 361px) and (max-width: 375px) {
+  .products-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .product-card {
+    border-radius: 8px;
+    font-size: 0.7rem;
+    padding: 5px;
+  }
+
+  .product-image {
+    height: 100px;
+  }
+
+  .product-title {
+    font-size: 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .product-desc {
+    display: none;
+  }
+
+  .product-price {
+    font-size: 0.75rem;
+  }
+
+  .product-category {
+    font-size: 0.65rem;
+  }
+
+  .product-buttons {
+    gap: 3px;
+  }
+
+  .btn-cart,
+  .btn-enquiry {
+    font-size: 0.6rem;
+    padding: 2px 4px;
+  }
+
+  .heart-container {
+    top: 3px;
+    right: 3px;
+  }
+
+  .wishheart i {
+    font-size: 0.9rem;
+  }
+
+  /* skeleton */
+  .skeleton-image {
+    height: 100px;
+  }
+
+  .skeleton-title,
+  .skeleton-price,
+  .skeleton-text,
+  .skeleton-button {
+    height: 9px;
+    margin-bottom: 5px;
+  }
+}
+
+
+/* ---------- 425px (same style, slightly more breathing) ---------- */
+@media screen and (min-width: 376px) and (max-width: 425px) {
+  .products-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .product-card {
+    border-radius: 10px;
+    font-size: 0.75rem;
+    padding: 6px;
+  }
+
+  .product-image {
+    height: 110px;
+  }
+
+  .product-title {
+    font-size: 0.75rem;
+  }
+
+  .product-desc {
+    display: none;
+  }
+
+  .product-price {
+    font-size: 0.8rem;
+  }
+
+  .product-category {
+    font-size: 0.7rem;
+  }
+
+  .product-buttons {
+    gap: 4px;
+  }
+
+  .btn-cart,
+  .btn-enquiry {
+    font-size: 0.65rem;
+    padding: 3px 5px;
+  }
+
+  .heart-container {
+    top: 4px;
+    right: 4px;
+  }
+
+  .wishheart i {
+    font-size: 1rem;
+  }
+
+  /* skeleton */
+  .skeleton-image {
+    height: 110px;
+  }
+
+  .skeleton-title,
+  .skeleton-price,
+  .skeleton-text,
+  .skeleton-button {
+    height: 10px;
+    margin-bottom: 6px;
+  }
+}

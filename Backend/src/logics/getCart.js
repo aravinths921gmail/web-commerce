@@ -1,15 +1,26 @@
-const Cart = require("../Model/Cart")
+const Cart = require("../Model/Cart");
 
-const getCart = async(req, res) => {
+const getCart = async (req, res) => {
 
-    try{
-        const getItem = await Cart.find()
-        res.status(200).json(getItem);
+  try {
+
+    const userId = req.details.id;
+
+    const cart = await Cart.findOne({ userId })
+  .populate({
+    path: "items.Product",
+    populate: {
+      path: "category",
+      select: "name"
     }
-    catch(err){ return res.json(err.message)};
-    
+  });
+  
+    res.status(200).json(cart);
 
-}
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 
-module.exports = {getCart};
+};
 
+module.exports = { getCart };

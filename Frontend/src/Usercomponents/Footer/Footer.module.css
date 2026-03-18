@@ -1,0 +1,314 @@
+.footer {
+  background: var(--background-color);
+  color: var(--text-color);
+  padding-top: 50px;
+  border-top: 1px solid #eee;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  padding: 0 20px;
+
+}
+
+.column h4 {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.column p {
+  margin: 6px 0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.column p:hover {
+  color: var(--primary-color);
+}
+
+.logo{
+    height: 90px;
+}
+
+.socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.socials svg {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.socials svg:hover {
+  color: var(--primary-color);
+}
+
+.bottom {
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+}
+
+.page {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: left;
+  line-height: 1.8;
+  color: #111;
+  font-family: Arial, sans-serif;
+}
+
+.page {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: left;
+  line-height: 1.8;
+}
+
+.page h1 {
+  font-size: 34px;
+  color: #ff7a00;
+  margin-bottom: 25px;
+}
+
+.page p {
+  font-size: 17px;
+  margin-bottom: 18px;
+  color: var(--text-color);
+}
+
+.backBtn {
+  display: inline-block;
+  margin-bottom: 30px;
+  color: #ff7a00;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.backBtn:hover {
+  color: #ff5200;
+}
+
+.backBtn:hover {
+  color: #ff5200;
+}
+
+/* DARK MODE */
+:global(.dark) .page {
+  color: #eee;
+}
+
+:global(.dark) .page h1 {
+  color: #ff9500;
+}
+
+:global(.dark) .page p {
+  color: #ccc;
+}
+
+:global(.dark) .backBtn {
+  color: #ff9500;
+}
+
+:global(.dark) .backBtn:hover {
+  color: #ff7a00;
+}
+
+.column a {
+  text-decoration: none;   /* Remove underline */
+  color: inherit;          /* Inherit the column text color */
+  display: block;          /* So the <p> inside link behaves correctly */
+  transition: color 0.3s;
+}
+
+.column a:hover {
+  color: #ff7a00;          /* Orange on hover */
+}
+
+/* ---------- EXTRA SMALL PHONES (≤ 320px) ---------- */
+@media (max-width: 320px) {
+
+  .footer {
+    padding-top: 25px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .logo {
+    height: 55px;
+  }
+
+  .column h4 {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .column p,
+  .column a {
+    font-size: 11px;
+    margin: 4px 0;
+  }
+
+  .socials {
+    gap: 6px;
+  }
+
+  .socials svg {
+    font-size: 14px;
+  }
+
+  .bottom {
+    font-size: 11px;
+    padding: 10px;
+  }
+
+  .page {
+    margin: 25px auto;
+    padding: 0 10px;
+  }
+
+  .page h1 {
+    font-size: 20px;
+  }
+
+  .page p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .backBtn {
+    font-size: 12px;
+  }
+}
+
+
+/* ---------- SMALL PHONES (≤ 375px) ---------- */
+@media (max-width: 375px) {
+
+  .container {
+    gap: 18px;
+  }
+
+  .logo {
+    height: 65px;
+  }
+
+  .column h4 {
+    font-size: 13px;
+  }
+
+  .column p,
+  .column a {
+    font-size: 12px;
+  }
+
+  .bottom {
+    font-size: 12px;
+  }
+
+  .page h1 {
+    font-size: 22px;
+  }
+
+  .page p {
+    font-size: 13px;
+  }
+}
+
+
+/* ---------- MOBILE (≤ 425px) ---------- */
+@media (max-width: 425px) {
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .logo {
+    height: 70px;
+  }
+
+  .column h4 {
+    font-size: 14px;
+  }
+
+  .column p,
+  .column a {
+    font-size: 13px;
+  }
+
+  .bottom {
+    font-size: 13px;
+  }
+
+  .page h1 {
+    font-size: 24px;
+  }
+
+  .page p {
+    font-size: 14px;
+  }
+}
+
+
+/* ---------- TABLET (426px – 768px) ---------- */
+@media (min-width: 426px) and (max-width: 768px) {
+
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .logo {
+    height: 80px;
+  }
+
+  .column h4 {
+    font-size: 15px;
+  }
+
+  .column p,
+  .column a {
+    font-size: 14px;
+  }
+
+  .bottom {
+    font-size: 13px;
+  }
+
+  .page h1 {
+    font-size: 28px;
+  }
+
+  .page p {
+    font-size: 15px;
+  }
+}
+
+
+/* ---------- SMALL LAPTOP (769px – 1024px) ---------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .logo {
+    height: 85px;
+  }
+}

@@ -1,0 +1,149 @@
+.blogPage {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 20px;
+  color: #111;
+  font-family: Arial, sans-serif;
+  text-align: left; /* Reading-friendly alignment */
+  line-height: 1.8;
+}
+
+.blogPage h1 {
+  font-size: 36px;
+  color: #ff7a00;
+  margin-bottom: 30px;
+}
+
+.blogPage h2 {
+  font-size: 24px;
+  color: #ff7a00;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.blogPage p {
+  font-size: 17px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.backBtn {
+  display: inline-block;
+  margin-bottom: 30px;
+  color: #ff7a00;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.backBtn:hover {
+  color: #ff5200;
+  text-decoration: underline;
+}
+
+/* DARK MODE */
+:global(.dark) .blogPage {
+  color: #eee;
+}
+
+:global(.dark) .blogPage h1,
+:global(.dark) .blogPage h2 {
+  color: #ff9500;
+}
+
+:global(.dark) .blogPage p {
+  color: #ccc;
+}
+
+:global(.dark) .backBtn {
+  color: #ff9500;
+}
+
+:global(.dark) .backBtn:hover {
+  color: #ff7a00;
+}
+
+/* ---------- 320px (very small phones) ---------- */
+@media (max-width: 320px) {
+
+  .blogPage {
+    margin: 20px auto;
+    padding: 0 12px;
+    line-height: 1.6;
+  }
+
+  .blogPage h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .blogPage h2 {
+    font-size: 16px;
+    margin-top: 18px;
+    margin-bottom: 10px;
+  }
+
+  .blogPage p {
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+
+  .backBtn {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+}
+
+
+/* ---------- 375px ---------- */
+@media (min-width: 321px) and (max-width: 375px) {
+
+  .blogPage {
+    margin: 25px auto;
+    padding: 0 14px;
+    line-height: 1.65;
+  }
+
+  .blogPage h1 {
+    font-size: 24px;
+  }
+
+  .blogPage h2 {
+    font-size: 18px;
+  }
+
+  .blogPage p {
+    font-size: 14px;
+  }
+
+  .backBtn {
+    font-size: 14px;
+  }
+}
+
+
+/* ---------- 425px ---------- */
+@media (min-width: 376px) and (max-width: 425px) {
+
+  .blogPage {
+    margin: 30px auto;
+    padding: 0 16px;
+    line-height: 1.7;
+  }
+
+  .blogPage h1 {
+    font-size: 26px;
+  }
+
+  .blogPage h2 {
+    font-size: 20px;
+  }
+
+  .blogPage p {
+    font-size: 15px;
+  }
+
+  .backBtn {
+    font-size: 15px;
+  }
+}

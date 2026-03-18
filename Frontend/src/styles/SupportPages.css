@@ -1,0 +1,339 @@
+.support-page{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.support-header{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.support-header h1{
+  font-size:36px;
+  margin-bottom:10px;
+}
+
+.support-header p{
+  color:#555;
+}
+
+.support-section{
+  margin-bottom:35px;
+}
+
+.support-section h2{
+  margin-bottom:15px;
+}
+
+.support-section ul{
+  padding-left:20px;
+}
+
+.support-section li{
+  margin-bottom:8px;
+}
+
+.faq-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.faq-card{
+  padding:20px;
+  border:1px solid #eee;
+  border-radius:8px;
+  background:transparent;
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.contact-card{
+  padding:20px;
+  border-radius:8px;
+  border:1px solid #eee;
+  text-align:center;
+}
+
+.section.support{
+  font-size: 12px;
+}
+/* ================= BASE ================= */
+
+.support-page{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.support-header{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.support-header h1{
+  font-size:36px;
+  margin-bottom:10px;
+}
+
+.support-header p{
+  color:#555;
+}
+
+/* ================= SECTIONS ================= */
+
+.support-section{
+  margin-bottom:35px;
+}
+
+.support-section h2{
+  margin-bottom:15px;
+}
+
+.support-section ul{
+  padding-left:20px;
+}
+
+.support-section li{
+  margin-bottom:8px;
+}
+
+/* ================= FAQ ================= */
+
+.faq-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+.faq-card{
+  padding:20px;
+  border:1px solid #eee;
+  border-radius:8px;
+  background:transparent;
+}
+
+.faq-card h3{
+  margin-bottom:8px;
+}
+
+.faq-card p{
+  color:#555;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.contact-card{
+  padding:20px;
+  border-radius:8px;
+  border:1px solid #eee;
+  text-align:center;
+}
+
+.contact-card h3{
+  margin-bottom:8px;
+}
+
+.contact-card p{
+  color:#555;
+}
+
+
+
+
+/* MOBILE (≤ 425px)  */
+@media (max-width: 425px) {
+
+  .support-page {
+    padding: 25px 12px;
+  }
+
+  .support-header {
+    margin-bottom: 25px;
+  }
+
+  .support-header h1 {
+    font-size: 22px;
+  }
+
+  .support-header p {
+    font-size: 13px;
+  }
+
+  .support-section {
+    margin-bottom: 20px;
+  }
+
+  .support-section h2 {
+    font-size: 16px;
+  }
+
+  .support-section li {
+    font-size: 13px;
+  }
+
+  /* FAQ */
+  .faq-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .faq-card {
+    padding: 12px;
+  }
+
+  .faq-card h3 {
+    font-size: 14px;
+  }
+
+  .faq-card p {
+    font-size: 12px;
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .contact-card {
+    padding: 12px;
+  }
+
+  .contact-card h3 {
+    font-size: 14px;
+  }
+
+  .contact-card p {
+    font-size: 12px;
+  }
+}
+
+
+/*  TABLET (426px – 768px)  */
+@media (min-width: 426px) and (max-width: 768px) {
+
+  .support-page {
+    padding: 30px 18px;
+  }
+
+  .support-header h1 {
+    font-size: 26px;
+  }
+
+  .support-header p {
+    font-size: 14px;
+  }
+
+  .support-section h2 {
+    font-size: 18px;
+  }
+
+  .support-section li {
+    font-size: 14px;
+  }
+
+  /* FAQ */
+  .faq-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .faq-card {
+    padding: 14px;
+  }
+
+  .faq-card h3 {
+    font-size: 15px;
+  }
+
+  .faq-card p {
+    font-size: 13px;
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .contact-card {
+    padding: 14px;
+  }
+
+  .contact-card h3 {
+    font-size: 15px;
+  }
+
+  .contact-card p {
+    font-size: 13px;
+  }
+}
+
+
+/*  (≤ 375px)  */
+@media (max-width: 375px) {
+
+  .support-page {
+    padding: 16px 8px;
+  }
+
+  .support-header h1 {
+    font-size: 18px;
+  }
+
+  .support-header p {
+    font-size: 11px;
+  }
+
+  .support-section h2 {
+    font-size: 14px;
+  }
+
+  .support-section li {
+    font-size: 11px;
+  }
+
+  /* FAQ */
+  .faq-container {
+    gap: 8px;
+  }
+
+  .faq-card {
+    padding: 8px;
+  }
+
+  .faq-card h3 {
+    font-size: 12px;
+  }
+
+  .faq-card p {
+    font-size: 11px;
+  }
+
+  /* CONTACT */
+  .contact-card {
+    padding: 8px;
+  }
+
+  .contact-card h3 {
+    font-size: 12px;
+  }
+
+  .contact-card p {
+    font-size: 11px;
+  }
+}

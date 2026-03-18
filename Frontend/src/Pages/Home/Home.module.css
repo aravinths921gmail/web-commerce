@@ -1,0 +1,482 @@
+.hero{
+text-align:center;
+padding:70px 20px;
+background:linear-gradient(135deg,#0f0f0f,#1a1a1a);
+color:white;
+animation:fadeIn 1s ease;
+}
+
+.brandTitle{
+font-size:70px;
+font-weight:900;
+letter-spacing:6px;
+color:#ff7a00;
+animation:slideDown 1s ease;
+}
+
+.brandSubtitle{
+font-size:20px;
+color:#ddd;
+margin-top:10px;
+margin-bottom:30px;
+}
+
+.heroButtons{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.shopBtn{
+padding:14px 28px;
+border:none;
+background:#ff7a00;
+color:white;
+font-size:16px;
+border-radius:40px;
+cursor:pointer;
+transition:all .3s;
+}
+
+.shopBtn:hover{
+background:#ff5200;
+transform:translateY(-4px);
+box-shadow:0 10px 25px rgba(255,122,0,0.4);
+}
+
+.bmiBtn{
+padding:14px 28px;
+border:2px solid #ff7a00;
+background:transparent;
+color:#ff7a00;
+font-size:16px;
+border-radius:40px;
+cursor:pointer;
+transition:.3s;
+}
+
+.bmiBtn:hover{
+background:#ff7a00;
+color:white;
+}
+
+/* SECTIONS */
+
+.section{
+padding:60px 8%;
+animation:fadeUp 1s ease;
+flex-wrap: wrap;
+}
+
+.sectionTitle{
+text-align:center;
+font-size:34px;
+margin-bottom:40px;
+font-weight:700;
+}
+
+/* BMI */
+
+.bmiSection{
+text-align:center;
+padding:80px 20px;
+background:linear-gradient(135deg,#111,#222);
+color:white;
+}
+
+.bmiSection h2{
+font-size:32px;
+margin-bottom:10px;
+}
+
+.bmiSection p{
+max-width:600px;
+margin:auto;
+margin-bottom:25px;
+color:#ccc;
+}
+
+.bmiCta{
+padding:14px 30px;
+background:#ff7a00;
+border:none;
+color:white;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+}
+
+.bmiCta:hover{
+background:#ff5200;
+transform:scale(1.05);
+}
+
+/* FEATURES */
+
+.featureSection{
+display:flex;
+justify-content:center;
+gap:40px;
+padding:60px 8%;
+flex-wrap:wrap;
+}
+
+.featureCard{
+width:260px;
+background:white;
+padding:30px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 6px 20px rgba(0,0,0,0.08);
+transition:.3s;
+}
+
+.featureCard:hover{
+transform:translateY(-10px);
+box-shadow:0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* DARK MODE - GLOBAL */
+:global(.dark) {
+  background-color: #0a0a0a;
+  color: #f0f0f0;
+}
+
+:global(.dark) .hero {
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+}
+
+:global(.dark) .brandTitle {
+  color: #ff9500;
+  text-shadow: 0 0 20px rgba(255,149,0,0.6);
+}
+
+:global(.dark) .brandSubtitle {
+  color: #ccc;
+}
+
+:global(.dark) .shopBtn {
+  background: #ff9500;
+  color: #fff;
+}
+
+:global(.dark) .bmiBtn {
+  color: #ff9500;
+  border-color: #ff9500;
+}
+
+:global(.dark) .bmiBtn:hover,
+:global(.dark) .bmiCta:hover {
+  background: #ff7a00;
+  color: white;
+}
+
+:global(.dark) .bmiSection {
+  background: linear-gradient(135deg, #111, #222);
+  color: #ddd;
+}
+
+:global(.dark) .featureCard {
+  background: #000000;
+  color: #eee;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  border: 1px solid gray;
+}
+
+:global(.dark) .featureCard:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgb(255, 136, 0);
+}
+
+:global(.dark) .sectionTitle {
+  color: #fff;
+}
+
+:global(.dark) .section {
+  background: #0f0f0f;
+}
+
+/* BLOG SECTION */
+
+.blogContainer {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.blogCard {
+  background: white;
+  width: 300px;
+  padding: 25px 20px;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s;
+}
+
+.blogCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.blogCard h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #ff7a00;
+}
+
+.blogCard p {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.blogReadMore {
+  padding: 10px 22px;
+  background: #ff7a00;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.blogReadMore:hover {
+  background: #ff5200;
+  transform: scale(1.05);
+}
+
+/* DARK MODE - BLOG */
+:global(.dark) .blogCard {
+  background: #000000;
+  color: #eee;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  border: 1px solid gray;
+}
+
+:global(.dark) .blogCard h3 {
+  color: #ff9500;
+}
+
+:global(.dark) .blogCard p {
+  color: #ccc;
+}
+
+:global(.dark) .blogReadMore {
+  background: #ff9500;
+  color: white;
+}
+
+:global(.dark) .blogReadMore:hover {
+  background: #ff7a00;
+}
+
+/* RESPONSIVE */
+@media(max-width:992px){
+  .blogContainer {
+    gap: 20px;
+  }
+}
+
+@media(max-width:768px){
+  .blogCard {
+    width: 100%;
+  }
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+
+@keyframes slideDown{
+from{opacity:0; transform:translateY(-40px)}
+to{opacity:1; transform:translateY(0)}
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.brandTitle{
+font-size:48px;
+}
+
+.section{
+padding:50px 20px;
+}
+
+.featureSection{
+gap:20px;
+}
+
+}
+
+/* ---------- EXTRA SMALL PHONES (≤ 320px) ---------- */
+@media (max-width: 320px) {
+
+  .brandTitle {
+    font-size: 30px;
+    letter-spacing: 2px;
+  }
+
+  .brandSubtitle {
+    font-size: 12px;
+  }
+
+  .sectionTitle {
+    font-size: 18px;
+  }
+
+  .bmiSection h2 {
+    font-size: 18px;
+  }
+
+  .bmiSection p {
+    font-size: 12px;
+  }
+
+  .bmiBtn,
+  .shopBtn,
+  .bmiCta {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+
+  .featureCard h3 {
+    font-size: 14px;
+  }
+
+  .featureCard p {
+    font-size: 12px;
+  }
+
+  .blogCard h3 {
+    font-size: 14px;
+  }
+
+  .blogCard p {
+    font-size: 12px;
+  }
+
+  .blogReadMore {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+}
+
+
+/* ---------- SMALL PHONES (≤ 375px) ---------- */
+@media (max-width: 375px) {
+
+  .brandTitle {
+    font-size: 36px;
+    letter-spacing: 3px;
+  }
+
+  .brandSubtitle {
+    font-size: 13px;
+  }
+
+  .sectionTitle {
+    font-size: 20px;
+  }
+
+  .bmiSection h2 {
+    font-size: 20px;
+  }
+
+  .bmiSection p {
+    font-size: 13px;
+  }
+
+  .bmiBtn,
+  .shopBtn,
+  .bmiCta {
+    font-size: 13px;
+    padding: 10px 18px;
+  }
+
+  .featureCard h3 {
+    font-size: 15px;
+  }
+
+  .featureCard p {
+    font-size: 13px;
+  }
+
+  .blogCard h3 {
+    font-size: 15px;
+  }
+
+  .blogCard p {
+    font-size: 13px;
+  }
+}
+
+
+/* ---------- MOBILE (≤ 425px) ---------- */
+@media (max-width: 425px) {
+
+  .brandTitle {
+    font-size: 42px;
+    letter-spacing: 4px;
+  }
+
+  .brandSubtitle {
+    font-size: 14px;
+  }
+
+  .sectionTitle {
+    font-size: 22px;
+  }
+
+  .bmiSection h2 {
+    font-size: 22px;
+  }
+
+  .bmiSection p {
+    font-size: 14px;
+  }
+
+  .bmiBtn,
+  .shopBtn,
+  .bmiCta {
+    font-size: 14px;
+  }
+
+  .featureCard h3 {
+    font-size: 16px;
+  }
+
+  .featureCard p {
+    font-size: 14px;
+  }
+
+  .blogCard h3 {
+    font-size: 16px;
+  }
+
+  .blogCard p {
+    font-size: 14px;
+  }
+}
+

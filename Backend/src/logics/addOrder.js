@@ -2,43 +2,48 @@ const Order = require("../Model/Order");
 const checkout = require("../logics/checkout");
 const redis = require("../config/redis");
 const { v4: uuidv4 } = require("uuid");
+const Cart = require("../Model/Cart");
+const Product = require("../Model/Product"); 
+
+
 
 const addOrder = async (req, res) => {
   const userId = req.details.id;
   const { cartid } = req.params;
   const { shippingAddress, paymentMethod, idempotencyKey } = req.body;
 
-  // 1️⃣ Generate idempotency key
+
+  //  Generate idempotency key
   const key = idempotencyKey || uuidv4(); //If idemp not present, create it using uuidv4
   const redisKey = `order:${userId}:${key}`;  //Creating cache storage to prevent duplicate
 
-  const lockKey = `order-lock:${userId}:${cartid}`;
+  const lockKey = `order-lock:${userId}:${cartid}:${key}`;
   const lockValue = Date.now() + Math.random(); // unique lock value
   let lock;
 
   try {
-    // 2️⃣ Acquire atomic Redis lock to prevent concurrent processing
+    // Acquire atomic Redis lock to prevent concurrent processing
     lock = await redis.set(lockKey, lockValue, "NX", "PX", 30000); // 30s lock
     if (!lock) {   //If you can't open the lock means, its already in process
       return res.status(409).json({ message: "Order is already being processed" });
     }
 
-    // 3️⃣ Check if order already exists for this idempotency key
+    // Check if order already exists for this idempotency key
     const cachedOrder = await redis.get(redisKey);
     if (cachedOrder) {
-      return res.status(200).json({message: "Order already processed", order: JSON.parse(cachedOrder)});
+      return res.status(200).json({ message: "Order already processed", order: JSON.parse(cachedOrder) });
     }
 
-    // 4️⃣ Process checkout (calculate totals, items, etc.)
+    // Process checkout (calculate totals, items, etc.)
     const summary = await checkout(cartid, userId);
 
-    // 5️⃣ Create order in DB with unique cartId constraint
+    // Create order in DB with unique cartId constraint
     let order;
-    
+
     try {
       order = await Order.create({
         userId,
-        cartId: cartid, 
+        cartId: cartid,
         items: summary.items,
         pricing: {
           shipping: summary.shipping,
@@ -58,7 +63,7 @@ const addOrder = async (req, res) => {
       });
 
     }
-    
+
     catch (err) {
       // Handle duplicate key (cart already has an order)
       if (err.code === 11000) {
@@ -72,10 +77,20 @@ const addOrder = async (req, res) => {
       throw err;
     }
 
-    // 6️⃣ Cache the order in Redis under idempotency key
-    await redis.set(redisKey, JSON.stringify(order), "EX", 3600); // 1 hour TTL
+    // Cache the order in Redis under idempotency key
+  
 
-    // 7️⃣ Return order
+   
+    await Cart.findByIdAndUpdate(cartid, {
+      $set: { items: [] }
+    });
+
+    await Cart.findByIdAndUpdate(cartid, {
+  $set: { items: [], status: "finished" } // mark as finished
+});
+
+
+    // Return order
     return res.status(201).json({ message: "Order created", order });
 
   }
@@ -84,7 +99,7 @@ const addOrder = async (req, res) => {
   }
 
   finally {
-    // 8️⃣ Release lock safely
+    // Release lock safely
     if (lock) {
       const currentValue = await redis.get(lockKey);
       if (currentValue && currentValue === lockValue) {

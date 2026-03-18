@@ -5,7 +5,7 @@ const {createCategory, getCategories, updateCategory, deleteCategory} = require(
 
 const {verifyToken, Admin, user} = require("../../middlewares/authmiddlewares")
 
-Catrouter.get("/getCategories", verifyToken, user, getCategories);
+Catrouter.get("/getCategories", verifyToken, getCategories);
 
 Catrouter.post("/createCategory", verifyToken, Admin, createCategory);
 Catrouter.put("/updateCategory/:id", verifyToken, Admin, updateCategory);

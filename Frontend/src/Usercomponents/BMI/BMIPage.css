@@ -1,0 +1,278 @@
+.bmi-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #111, #1c1c1c);
+  animation: fadeIn 1s ease;
+}
+
+/* CARD */
+
+.bmi-card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  width: 380px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.8s ease;
+}
+
+/* TITLE */
+
+.bmi-title {
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #000000;
+}
+
+/* INPUTS */
+
+.bmi-card input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.bmi-card input:focus {
+  outline: none;
+  border-color: #ff7a00;
+  box-shadow: 0 0 10px rgba(255, 122, 0, 0.3);
+}
+
+/* BUTTON */
+
+.bmi-card button {
+  width: 100%;
+  padding: 12px;
+  background: #ff7a00;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.bmi-card button:hover {
+  background: #ff5200;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 122, 0, 0.4);
+}
+
+/* RESULT */
+
+.bmi-result {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f6f6f6;
+  border-radius: 8px;
+  animation: resultAppear 0.7s ease;
+}
+
+.dark .bmi-page {
+  background: linear-gradient(135deg, #111, #1c1c1c);
+}
+
+.dark .bmi-card {
+  background: #1c1c1c;
+  color: #eee;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgb(209, 209, 209);
+}
+
+.dark .bmi-title {
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #fafafa;
+}
+
+.dark .bmi-card input {
+  background: #222;
+  color: #fff;
+  border: 1px solid #ffffff;
+
+}
+
+.dark .bmi-card input:focus {
+  border-color: #ff9500;
+  box-shadow: 0 0 10px rgba(255, 149, 0, 0.4);
+}
+
+.dark .bmi-card button {
+  background: #ff9500;
+}
+
+.dark .bmi-card button:hover {
+  background: #ff7a00;
+}
+
+.dark .bmi-result {
+  background: #2a2a2a;
+  color: #eee;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes resultAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:500px) {
+
+  .bmi-card {
+    width: 90%;
+    padding: 30px;
+  }
+
+}
+
+
+/* ---------- EXTRA SMALL PHONES (≤ 320px) ---------- */
+@media (max-width: 320px) {
+
+  .bmi-card {
+    width: 95%;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .bmi-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .bmi-card input {
+    padding: 8px;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .bmi-card button {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .bmi-page {
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #111, #1c1c1c);
+    animation: fadeIn 1s ease;
+  }
+
+
+  .bmi-result {
+    padding: 12px;
+    margin-top: 15px;
+  }
+
+  .bmi-result h3 {
+    font-size: 14px;
+  }
+
+  .bmi-result p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+}
+
+
+/* ---------- SMALL PHONES (≤ 375px) ---------- */
+@media (max-width: 375px) {
+
+  .bmi-card {
+    width: 92%;
+    padding: 25px;
+  }
+
+  .bmi-title {
+    font-size: 20px;
+  }
+
+  .bmi-card input {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .bmi-card button {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .bmi-result h3 {
+    font-size: 15px;
+  }
+
+  .bmi-result p {
+    font-size: 13px;
+  }
+}
+
+
+/* ---------- MOBILE (≤ 425px) ---------- */
+@media (max-width: 425px) {
+
+  .bmi-card {
+    width: 90%;
+    padding: 28px;
+  }
+
+  .bmi-title {
+    font-size: 22px;
+  }
+
+  .bmi-card input {
+    font-size: 14px;
+  }
+
+  .bmi-card button {
+    font-size: 14px;
+  }
+
+  .bmi-result h3 {
+    font-size: 16px;
+  }
+
+  .bmi-result p {
+    font-size: 14px;
+  }
+}

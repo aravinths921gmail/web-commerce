@@ -1,0 +1,261 @@
+/* OUTER SPACE (important as you asked) */
+.tracker-wrapper {
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* MAIN CARD */
+.tracker-card {
+  width: 700px;
+  padding: 30px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+/* GRID */
+.setup-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+/* Weight input grid */
+.weights-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two columns side by side */
+  gap: 20px; /* space between columns */
+  margin-top: 15px;
+}
+
+.weight-input {
+  display: flex;
+  flex-direction: column; /* label on top, input below */
+}
+
+.weight-input label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #000000;
+}
+
+.dark .weight-input label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.weight-input input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+
+/* INPUTS */
+input, select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* STATS */
+.stats {
+  margin: 20px 0;
+  line-height: 1.8;
+}
+
+/* SUGGESTIONS */
+.suggestions div {
+  padding: 8px;
+  cursor: pointer;
+}
+.suggestions div:hover {
+  background: #f1f1f1;
+}
+
+/* PRODUCTS */
+.products {
+  display: flex;
+  gap: 10px;
+}
+
+.mini-card {
+  width: 120px;
+}
+
+.mini-card img {
+  width: 100%;
+}
+
+/* WARNING */
+.warning {
+  color: red;
+}
+
+/* DARK MODE */
+.dark .tracker-card {
+  background: #000000;
+  color: white;
+  border: 1px solid silver;
+}
+
+/* ---------- MOBILE (≤ 425px) ULTRA COMPACT ---------- */
+@media (max-width: 425px) {
+
+  .tracker-wrapper {
+    padding: 25px 6px;
+  }
+
+  .tracker-card {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  .tracker-card h2 {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+  }
+
+  /* STACK EVERYTHING */
+  .setup-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .weights-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  input, select {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .weight-input label {
+    font-size: 11px;
+    margin-bottom: 2px;
+  }
+
+  .stats {
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 10px 0;
+  }
+
+  .suggestions div {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  ul li {
+    font-size: 12px;
+  }
+
+  /* PRODUCTS */
+  .products {
+    overflow-x: auto;
+    gap: 6px;
+  }
+
+  .mini-card {
+    min-width: 85px;
+    width: 85px;
+    padding: 6px;
+  }
+
+  .mini-card p {
+    font-size: 11px;
+  }
+
+  .mini-card button {
+    font-size: 10px;
+    padding: 3px 5px;
+  }
+}
+
+
+/* ---------- TABLET (426px – 768px) COMPACT ---------- */
+@media (min-width: 426px) and (max-width: 768px) {
+
+  .tracker-wrapper {
+    padding: 40px 12px;
+  }
+
+  .tracker-card {
+    width: 95%;
+    padding: 18px;
+  }
+
+  .tracker-card h2 {
+    font-size: 1.3em;
+  }
+
+  .setup-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .weights-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  input, select {
+    padding: 7px;
+    font-size: 13px;
+  }
+
+  .weight-input label {
+    font-size: 12px;
+  }
+
+  .stats {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* PRODUCTS FIX */
+  .products {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .mini-card {
+    width: 95px;
+    padding: 8px;
+  }
+
+  .mini-card p {
+    font-size: 12px;
+  }
+
+  .mini-card button {
+    font-size: 11px;
+  }
+}
+
+
+/* ---------- SMALL LAPTOP (769px – 1024px) SLIGHTLY TIGHT ---------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .tracker-card {
+    width: 85%;
+    padding: 22px;
+  }
+
+  .tracker-card h2 {
+    font-size: 1.6em;
+  }
+
+  .stats {
+    font-size: 14px;
+  }
+
+  .mini-card {
+    width: 105px;
+  }
+}

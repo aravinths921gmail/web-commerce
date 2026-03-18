@@ -1,0 +1,3 @@
+jQuery(document).ready(function($){var googleUser={};var startApp=function(){gapi.load('auth2',function(){auth2=gapi.auth2.init({client_id:xoo_sl_google_localize.clientID,cookiepolicy:'single_host_origin',});$.each($('.xoo-sl-google-btn'),function(){var $button=$(this);auth2.attachClickHandler($(this)[0],{},function(googleUser){var profile=googleUser.getBasicProfile();var userInfo={social_type:'google',email:profile.getEmail(),first_name:profile.getGivenName(),last_name:profile.getFamilyName(),id:profile.getId(),name:profile.getName()}
+xoo_sl_localize.sendUserInfo(userInfo,$button)})})})}
+startApp()})

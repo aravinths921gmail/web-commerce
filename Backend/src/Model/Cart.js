@@ -15,7 +15,8 @@ const cartItemSchema = new mongoose.Schema(
             required : true,
             min : 1 //Prevent -1 quantity   
         }
-    }, {_id : false} //prevent automatic id for this schema
+    }, 
+    // {_id : false} //prevent automatic id for this schema
 );
     
 const Cart = new mongoose.Schema(

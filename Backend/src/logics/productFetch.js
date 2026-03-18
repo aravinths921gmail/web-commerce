@@ -3,6 +3,7 @@ const Product = require("../Model/Product")
 const productFetch = async (req, res) => {
     try {
         const fetchedProduct = await Product.find().populate("category");
+        console.log(fetchedProduct);
         res.status(200).json(fetchedProduct);
     } catch (err) {
         res.status(500).json({ error: err.message });
@@ -26,7 +27,6 @@ const updateProduct = async(req, res) =>
     catch(err){
         res.json(err.message);
     }
-    
 }
 
 //Deleting that fetched product: 
