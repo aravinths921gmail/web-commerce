@@ -8,7 +8,7 @@ import { SearchContext } from "../../Context/SearchContext";
 import emailjs from "@emailjs/browser";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { WishlistContext } from "../../Context/wishlistContext";
+import { WishlistContext } from "../../Context/WishlistContext";
 import { CartContext } from "../../Context/CartContext";
 import CalorieTracker from "../../Pages/dashboard/Calorietracker";
 

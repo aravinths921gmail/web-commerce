@@ -10,7 +10,7 @@ import SignupModal from "./SignupModal";
 import styles from '../Navbar/Navbar.module.css';
 import logoname from '../../assets/images/logobg.png';
 import { SearchContext } from "../../Context/SearchContext";
-import { WishlistContext } from "../../Context/wishlistContext";
+import { WishlistContext } from "../../Context/WishlistContextishlistContext";
 import Modal from "react-bootstrap/Modal"; 
 import { CartContext } from "../../Context/CartContext";
 
@@ -259,4 +259,3 @@ export default function Navbars() {
     </>
   );
 }
-

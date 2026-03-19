@@ -6,7 +6,7 @@
  "scripts": {
     "start": "concurrently \"npm run backend\" \"npm run frontend\"",
     "backend": "cd Backend && npm run dev",
-    "frontend": "cd Frontend && npm run dev"
+    "frontend": "cd Frontend && vite --host --port 5173"
   },
   "repository": {
     "type": "git",
