@@ -1,0 +1,20 @@
+# =========================
+# Backend Environment Example
+# =========================
+
+# MongoDB connection string
+MONGO_URI=mongodb://username:password@host:port/database
+
+# Server port
+PORT=4000
+
+# Redis connection (optional, if used)
+REDIS_HOST=127.0.0.1
+REDIS_PORT=6379
+REDIS_PASSWORD=your_redis_password
+
+# JWT secret for authentication
+JWT_SECRET=your_jwt_secret
+
+# Any other secret keys
+API_KEY=your_api_key_here
