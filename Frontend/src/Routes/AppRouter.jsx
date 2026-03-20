@@ -26,7 +26,7 @@ import BMIPage from "../Usercomponents/BMI/BMIPage"
 import CalorieTracker from "../Pages/dashboard/Calorietracker";
 import WorkoutGuide from "../Pages/dashboard/WorkoutGuide";
 import Blog1 from "../Pages/Blogs/Blog1";
-import Blog2 from "../pages/Blogs/Blog2";
+import Blog2 from "../Pages/Blogs/Blog2";
 import Blog3 from "../Pages/Blogs/Blog3";
 
 import AboutUs from "../Usercomponents/Footer/AboutUs";
