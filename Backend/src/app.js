@@ -20,7 +20,7 @@ app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 // Enable CORS properly (must be before routes)
 app.use(cors({
-   origin: ["http://localhost:5173", "http://13.58.192.45:5173"], // exact frontend URL
+  origin: "http://http://13.49.230.178/:5173", // exact frontend URL
   credentials: true,               // allow sending cookies
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
   allowedHeaders: ["Content-Type", "Authorization"]
