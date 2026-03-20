@@ -20,7 +20,7 @@ app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 // Enable CORS properly (must be before routes)
 app.use(cors({
-  origin: "http://13.49.230.178/:5173", // exact frontend URL
+  origin: "http://13.49.230.178:5173", // exact frontend URL
   credentials: true,               // allow sending cookies
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
   allowedHeaders: ["Content-Type", "Authorization"]
@@ -28,7 +28,7 @@ app.use(cors({
 
 
 // Routes
-const authroute = require("./routes/v1/auth.route");
+const authroute = require("./routes/v1/auth.route");  
 const orderRouter = require("./routes/v1/orderRouter");
 const payRouter = require("./routes/v1/payRouter");
 const Catrouter = require("./routes/v1/categoryRoute");
