@@ -105,7 +105,7 @@ export default function Productfetching({ darkMode = false, categoryId }) {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://13.58.192.45:4000/api/v1/auth/productFetch");
+      const res = await axios.get("http://13.49.230.178:4000/api/v1/auth/productFetch");
 
       let fetchedProducts = res.data;
 
@@ -178,7 +178,7 @@ export default function Productfetching({ darkMode = false, categoryId }) {
           </div>
 
           {product.images?.length > 0 && (
-            <Card.Img variant="top" src={`http://13.58.192.45:4000/uploads/${encodeURIComponent(product.images[0])}`} className="product-image" />)}
+            <Card.Img variant="top" src={`http://13.49.230.178:4000/uploads/${encodeURIComponent(product.images[0])}`} className="product-image" />)}
 
           <Card.Body>  <Card.Title className="product-title">  {truncateText(product.Name, 30)} </Card.Title>
 

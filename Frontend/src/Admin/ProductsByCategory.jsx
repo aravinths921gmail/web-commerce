@@ -11,7 +11,7 @@ export default function ProductsByCategory(){
     try{
 
       const res = await axios.get(
-        `http://13.58.192.45:4000/api/v1/product/category/${categoryId}`
+        `http://13.49.230.178:4000/api/v1/product/category/${categoryId}`
       );
 
       setProducts(res.data);

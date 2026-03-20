@@ -193,7 +193,7 @@ export default function CalorieTracker({ products = [] }) {
         <div className="products">
           {recommendations.map(p => (
             <div key={p._id} className="mini-card">
-              <img src={`http://13.58.192.45:4000/uploads/${encodeURIComponent(p.images?.[0])}`} alt="" />
+              <img src={`http://13.49.230.178:4000/uploads/${encodeURIComponent(p.images?.[0])}`} alt="" />
               <p>{p.Name}</p>
               <button onClick={() => addToCart(p)}>Add</button>
             </div>

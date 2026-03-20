@@ -15,7 +15,7 @@ export default function Orders() {
 
   const fetchOrders = async () => {
     try {
-      const res = await axios.get("http://13.58.192.45:4000/api/v1/orders/getOrder", {
+      const res = await axios.get("http://13.49.230.178:4000/api/v1/orders/getOrder", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setOrders(res.data);
@@ -27,7 +27,7 @@ export default function Orders() {
 
   const deleteOrder = async (id) => {
     try {
-      await axios.delete(`http://13.58.192.45:4000/api/v1/orders/deleteOrder/${id}`, {
+      await axios.delete(`http://13.49.230.178:4000/api/v1/orders/deleteOrder/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setOrders((prev) => prev.filter((o) => o._id !== id));

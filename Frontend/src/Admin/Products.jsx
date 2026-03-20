@@ -27,7 +27,7 @@ export default function Products() {
     const fetchProducts = async () => {
       try {
         const res = await axios.get(
-          "http://13.58.192.45:4000/api/v1/auth/productFetch",
+          "http://13.49.230.178:4000/api/v1/auth/productFetch",
           { headers: { Authorization: `Bearer ${getToken()}` } }
         );
         setProducts(res.data);
@@ -62,7 +62,7 @@ export default function Products() {
       images.forEach((file) => formData.append("images", file)); // append multiple files
 
       const res = await axios.post(
-        "http://13.58.192.45:4000/api/v1/auth/ProductCreate",
+        "http://13.49.230.178:4000/api/v1/auth/ProductCreate",
         formData,
         { headers: { Authorization: `Bearer ${getToken()}`, "Content-Type": "multipart/form-data" } }
       );
@@ -82,7 +82,7 @@ export default function Products() {
   // Delete product
   const deleteProduct = async (id) => {
     try {
-      await axios.delete(`http://13.58.192.45:4000/api/v1/auth/deleteProduct/${id}`, {
+      await axios.delete(`http://13.49.230.178:4000/api/v1/auth/deleteProduct/${id}`, {
         headers: { Authorization: `Bearer ${getToken()}` },
       });
       setProducts(products.filter((p) => p._id !== id));
@@ -95,7 +95,7 @@ export default function Products() {
   const updateProduct = async (id) => {
     try {
       const res = await axios.put(
-        `http://13.58.192.45:4000/api/v1/auth/updateProduct/${id}`,
+        `http://13.49.230.178:4000/api/v1/auth/updateProduct/${id}`,
         {
           Name: editFields.Name,
           description: editFields.description,
@@ -172,7 +172,7 @@ export default function Products() {
                   {p.images && p.images.map((img, idx) => (
                     <img
                       key={idx}
-                      src={`http://13.58.192.45:4000/uploads/${encodeURIComponent(img)}`}
+                      src={`http://13.49.230.178:4000/uploads/${encodeURIComponent(img)}`}
                       alt={p.Name}
                       width="80"
                       style={{ borderRadius: "4px", objectFit: "cover", height: "80px" }}

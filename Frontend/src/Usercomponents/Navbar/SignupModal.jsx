@@ -42,7 +42,7 @@ function SignupModal({ show, handleClose }) {
       }
 
       try {
-        const response = await axios.post("http://13.58.192.45:4000/api/v1/auth/Loginpost", userdetails);
+        const response = await axios.post("http://13.49.230.178:4000/api/v1/auth/Loginpost", userdetails);
         localStorage.setItem("token", response.data.token);
         toast.success("Login successful!", { position: "top-center", autoClose: 2500 });
         setuserdetails({ email: "", password: "" });
@@ -62,7 +62,7 @@ function SignupModal({ show, handleClose }) {
     }
 
     try {
-      const response = await axios.post("http://13.58.192.45:4000/api/v1/auth/userpost", userdetails);
+      const response = await axios.post("http://13.49.230.178:4000/api/v1/auth/userpost", userdetails);
       toast.success("Account created successfully!", { position: "top-center", autoClose: 2500 });
       setuserdetails({ email: "", password: "" });
       handleClose();
