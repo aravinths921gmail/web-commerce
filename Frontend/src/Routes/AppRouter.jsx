@@ -25,7 +25,7 @@ import RefundPage from "../Pages/Orders/RefundPage";
 import BMIPage from "../Usercomponents/BMI/BMIPage"
 import CalorieTracker from "../Pages/dashboard/Calorietracker";
 import WorkoutGuide from "../Pages/dashboard/WorkoutGuide";
-import Blog1 from "../pages/Blogs/Blog1";
+import Blog1 from "../Pages/Blogs/Blog1";
 import Blog2 from "../pages/Blogs/Blog2";
 import Blog3 from "../Pages/Blogs/Blog3";
 
