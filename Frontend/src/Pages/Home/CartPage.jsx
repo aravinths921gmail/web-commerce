@@ -54,7 +54,7 @@ export default function CartPage() {
               {/* Product Image */}
               <div className="cart-img-wrapper">
                 <img
-                  src={`http://localhost:4000/uploads/${item.Product?.images?.[0] || "placeholder.jpg"}`}
+                  src={`http://13.58.192.45:4000/uploads/${item.Product?.images?.[0] || "placeholder.jpg"}`}
                   alt={item.Product?.Name || "Product"}
                   className="cart-img"
                 />

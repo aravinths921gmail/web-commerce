@@ -38,7 +38,7 @@ export default function AdminLogin({ setUser }) {
 
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/v1/auth/Loginpost",
+        "http://13.58.192.45:4000/api/v1/auth/Loginpost",
         formData,
         { withCredentials: true } // for HttpOnly cookie if backend sets it
       );

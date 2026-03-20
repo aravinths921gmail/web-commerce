@@ -16,13 +16,13 @@ export default function AdminOrders() {
         setLoading(true);
 
         // Fetch all orders
-        const ordersRes = await axios.get("http://localhost:4000/api/admin/orders", {
+        const ordersRes = await axios.get("http://13.58.192.45:4000/api/admin/orders", {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
 
         // Fetch all refunded orders
         const refundsRes = await axios.get(
-          "http://localhost:4000/api/v1/orders/getRefundedOrders",
+          "http://13.58.192.45:4000/api/v1/orders/getRefundedOrders",
           { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
         );
 
@@ -42,7 +42,7 @@ export default function AdminOrders() {
   // Delete order by ID
   const deleteOrder = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/admin/order/${id}`, {
+      await axios.delete(`http://13.58.192.45:4000/api/admin/order/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setOrders((prev) => prev.filter((o) => o._id !== id));
@@ -56,7 +56,7 @@ export default function AdminOrders() {
   // Delete refund by ID
   const deleteRefund = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/v1/orders/deleteRefund/${id}`, {
+      await axios.delete(`http://13.58.192.45:4000/api/v1/orders/deleteRefund/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setRefunds((prev) => prev.filter((r) => r._id !== id));

@@ -30,7 +30,7 @@ export default function CartPage() {
             {cart.map((item) => (
               <div key={item.Product._id} className="cart-item">
                 <img
-                  src={`http://localhost:4000/uploads/${item.Product.images?.[0]}`}
+                  src={`http://13.58.192.45:4000/uploads/${item.Product.images?.[0]}`}
                   className="cart-img"
                   alt={item.Product.Name}
                 />

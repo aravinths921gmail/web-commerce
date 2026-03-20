@@ -13,7 +13,7 @@ export default function Users() {
     const fetchUsers = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:4000/api/v1/auth/getUser",
+          "http://13.58.192.45:4000/api/v1/auth/getUser",
           {
             withCredentials: true // sends cookie
           }
@@ -33,7 +33,7 @@ export default function Users() {
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/api/v1/auth/deleteUser/${id}`, { withCredentials: true }); //send cookies
+      await axios.delete(`http://13.58.192.45:4000/api/v1/auth/deleteUser/${id}`, { withCredentials: true }); //send cookies
 
       setUsers(users.filter((u) => u._id !== id));
     }

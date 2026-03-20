@@ -23,7 +23,7 @@ export default function AddCategory() {
 
     try {
       const res = await axios.post(
-        "http://localhost:4000/api/v1/categories/createCategory",
+        "http://13.58.192.45:4000/api/v1/categories/createCategory",
         { name },
         { headers: { Authorization: `Bearer ${token}` } }
       );

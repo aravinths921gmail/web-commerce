@@ -13,7 +13,7 @@ export default function RefundPage() {
 
   const fetchRefundedOrders = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/v1/orders/getRefundedOrders", {
+      const res = await axios.get("http://13.58.192.45:4000/api/v1/orders/getRefundedOrders", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setOrders(res.data);
@@ -28,7 +28,7 @@ export default function RefundPage() {
   const deleteRefund = async (id) => {
     try {
         // console.log("Deleting refund ID:", id); 
-      await axios.delete(`http://localhost:4000/api/v1/orders/deleteRefund/${id}`, {
+      await axios.delete(`http://13.58.192.45:4000/api/v1/orders/deleteRefund/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setOrders((prev) => prev.filter((r) => r._id !== id));

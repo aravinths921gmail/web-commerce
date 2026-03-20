@@ -22,7 +22,7 @@ export default function OrderPage() {
       try {
         setLoading(true);
         const res = await axios.get(
-          `http://localhost:4000/api/v1/orders/getSingleOrder/${orderid}`,
+          `http://13.58.192.45:4000/api/v1/orders/getSingleOrder/${orderid}`,
           { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
         );
         setOrder(res.data);
@@ -44,7 +44,7 @@ export default function OrderPage() {
     try {
       setActionLoading(true);
       const res = await axios.patch(
-        `http://localhost:4000/api/v1/orders/CancelOrder/${orderid}`,
+        `http://13.58.192.45:4000/api/v1/orders/CancelOrder/${orderid}`,
         {},
         { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
       );
@@ -62,7 +62,7 @@ export default function OrderPage() {
     try {
       setActionLoading(true);
       const res = await axios.post(
-        `http://localhost:4000/api/v1/orders/verifyPayment/${orderid}`,
+        `http://13.58.192.45:4000/api/v1/orders/verifyPayment/${orderid}`,
         {},
         { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
       );

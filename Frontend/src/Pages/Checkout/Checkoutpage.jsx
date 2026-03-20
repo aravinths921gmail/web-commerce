@@ -73,7 +73,7 @@ export default function CheckoutPage() {
 
     try {
       const res = await axios.post(
-        `http://localhost:4000/api/v1/orders/addOrder/${cartId}`,
+        `http://13.58.192.45:4000/api/v1/orders/addOrder/${cartId}`,
         { shippingAddress: shipping, paymentMethod },
         {
           headers: {

@@ -209,7 +209,7 @@ export default function Navbars() {
                       className={styles.wishlistItem}
                       onClick={() => EnquireFromWishlist(item)}
                     >
-                      <img src={`http://localhost:4000/uploads/${item.images?.[0]}`} alt={item.Name} />
+                      <img src={`http://13.58.192.45:4000/uploads/${item.images?.[0]}`} alt={item.Name} />
                       <div>
                         <p>{item.Name}</p>
                         <span>₹{item.price}</span>

@@ -13,7 +13,7 @@ export default function CategoryProducts(){
 
       try{
         const res = await axios.get(
-          `http://localhost:4000/api/v1/auth/getProductsByCategory/${categoryId}`
+          `http://13.58.192.45:4000/api/v1/auth/getProductsByCategory/${categoryId}`
         );
 
         setProducts(res.data);
@@ -40,7 +40,7 @@ export default function CategoryProducts(){
           <div key={p._id} style={{border:"1px solid #ddd",padding:"20px",width:"250px"}}>
 
             <img
-              src={`http://localhost:4000/uploads/${p.images[0]}`}
+              src={`http://13.58.192.45:4000/uploads/${p.images[0]}`}
               alt={p.Name}
               width="100%"
             />
