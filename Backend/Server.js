@@ -1,4 +1,5 @@
-require("dotenv").config();
+require('dotenv').config({ path: __dirname + '/.env' }); // ensures .env in Backend folder is loaded
+// require("dotenv").config();
 const App = require("./src/app");
 const connectdb = require("./src/config/mdb");
 const redis = require("./src/config/redis");
