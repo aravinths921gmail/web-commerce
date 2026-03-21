@@ -87,9 +87,9 @@ if (token) {
 } 
 
         // Optional: reload to update cart context
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000);
+        // setTimeout(() => {
+        //   window.location.reload();
+        // }, 1000);
 
       } catch (error) {
         console.error("Login error:", error.response?.data || error.message);
