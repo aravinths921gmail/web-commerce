@@ -12,7 +12,7 @@ function SignupModal({ show, handleClose }) {
   const [userdetails, setuserdetails] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({ email: "", password: "", backend: "" });
 
-  // EMAIL & PASSWORD VALIDATION
+  // EMAIL VALIDATION
   const validateEmail = (email) => {
     const emailRegex = /^(?=.*\d)[a-zA-Z0-9._%+-]+@(gmail\.com|email\.com)$/;
     if (!email) return "Email is required";
@@ -20,6 +20,7 @@ function SignupModal({ show, handleClose }) {
     return "";
   };
 
+  // PASSWORD VALIDATION
   const validatePassword = (password) => {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$/;
     if (!password) return "Password is required";
@@ -32,7 +33,7 @@ function SignupModal({ show, handleClose }) {
     e.preventDefault();
     setErrors({ email: "", password: "", backend: "" });
 
-    // LOGIN MODE
+    // ================= LOGIN =================
     if (isLogin) {
       if (!userdetails.email) {
         return setErrors({ email: "Email is required", password: "", backend: "" });
@@ -42,32 +43,77 @@ function SignupModal({ show, handleClose }) {
       }
 
       try {
-        const response = await axios.post("http://13.49.230.178:4000/api/v1/auth/Loginpost", userdetails);
-        localStorage.setItem("token", response.data.token);
-        toast.success("Login successful!", { position: "top-center", autoClose: 2500 });
+        const response = await axios.post(
+          "http://13.49.230.178:4000/api/v1/auth/Loginpost",
+          userdetails
+        );
+
+        console.log("LOGIN RESPONSE:", response.data);
+
+        // ✅ SAVE TOKEN
+        const token = response.data.token;
+
+        if (!token) {
+          toast.error("Login failed: No token received");
+          return;
+        }
+
+        localStorage.setItem("token", token);
+
+        console.log("TOKEN AFTER SAVE:", localStorage.getItem("token"));
+
+        toast.success("Login successful!", {
+          position: "top-center",
+          autoClose: 2000,
+        });
+
         setuserdetails({ email: "", password: "" });
         handleClose();
+
+        // 🔥 IMPORTANT: reload app so CartContext picks token
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
+
       } catch (error) {
-        toast.error(error.response?.data?.message || "Invalid email or password", { position: "top-center", autoClose: 3000 });
+        console.error("Login error:", error.response?.data || error.message);
+        toast.error(
+          error.response?.data?.message || "Invalid email or password",
+          { position: "top-center", autoClose: 3000 }
+        );
       }
       return;
     }
 
-    // SIGNUP MODE
+    // ================= SIGNUP =================
     const emailError = validateEmail(userdetails.email);
     const passwordError = validatePassword(userdetails.password);
+
     if (emailError || passwordError) {
       setErrors({ email: emailError, password: passwordError, backend: "" });
       return;
     }
 
     try {
-      const response = await axios.post("http://13.49.230.178:4000/api/v1/auth/userpost", userdetails);
-      toast.success("Account created successfully!", { position: "top-center", autoClose: 2500 });
+      await axios.post(
+        "http://13.49.230.178:4000/api/v1/auth/userpost",
+        userdetails
+      );
+
+      toast.success("Account created successfully!", {
+        position: "top-center",
+        autoClose: 2500,
+      });
+
       setuserdetails({ email: "", password: "" });
       handleClose();
+
     } catch (error) {
-      toast.error(error.response?.data?.message || "Server error, try again later", { position: "top-center", autoClose: 3000 });
+      console.error("Signup error:", error.response?.data || error.message);
+      toast.error(
+        error.response?.data?.message || "Server error, try again later",
+        { position: "top-center", autoClose: 3000 }
+      );
     }
   };
 
@@ -91,7 +137,9 @@ function SignupModal({ show, handleClose }) {
               type="email"
               placeholder="Email address"
               value={userdetails.email}
-              onChange={(e) => setuserdetails({ ...userdetails, email: e.target.value })}
+              onChange={(e) =>
+                setuserdetails({ ...userdetails, email: e.target.value })
+              }
             />
             {errors.email && <div className={styles.errorMsg}>{errors.email}</div>}
           </div>
@@ -101,20 +149,33 @@ function SignupModal({ show, handleClose }) {
               type={showPassword ? "text" : "password"}
               placeholder="Password"
               value={userdetails.password}
-              onChange={(e) => setuserdetails({ ...userdetails, password: e.target.value })}
+              onChange={(e) =>
+                setuserdetails({ ...userdetails, password: e.target.value })
+              }
             />
-            <span className={styles.eyeIcon} onClick={() => setShowPassword(!showPassword)}>
+            <span
+              className={styles.eyeIcon}
+              onClick={() => setShowPassword(!showPassword)}
+            >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
-            {errors.password && <div className={styles.errorMsg}>{errors.password}</div>}
+            {errors.password && (
+              <div className={styles.errorMsg}>{errors.password}</div>
+            )}
           </div>
 
           <div className={styles.buttonList}>
             <button type="submit" className={styles.signupBtn}>
               {isLogin ? "Login" : "Create Account"}
             </button>
-            <button type="button" className={styles.loginBtn} onClick={switchMode}>
-              {isLogin ? "Don't have an account? Sign Up" : "Already have an account? Login"}
+            <button
+              type="button"
+              className={styles.loginBtn}
+              onClick={switchMode}
+            >
+              {isLogin
+                ? "Don't have an account? Sign Up"
+                : "Already have an account? Login"}
             </button>
           </div>
         </form>
