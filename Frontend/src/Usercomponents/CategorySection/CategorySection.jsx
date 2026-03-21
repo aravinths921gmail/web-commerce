@@ -2,26 +2,22 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Carousel from 'react-bootstrap/Carousel';
 import "./CategorySection.css";
-import treadmillImg from "../../assets/images/Products/treadmills.png";
-import elliptical from "../../assets/images/Products/elliptical.png";
-import spinbike from "../../assets/images/Products/spinbike.png";
-import dumbells from "../../assets/images/Products/home/dumbells.png";
-import yogamat from "../../assets/images/Products/home/yoga-mat.png";
-import bands from "../../assets/images/Products/home/bands.png";
 // import Treadmill from "../Categorieslist/Treadmill";
 
 export default function CategorySection() {
 
   const navigate = useNavigate();
 
-  const categories = [
-    { id: "69aeecd2fb1fa9b52efa3486", name: "Treadmills", image: treadmillImg },
-    { id: "69aeece3fb1fa9b52efa3489", name: "Elliptical Trainer", image: elliptical },
-    { id: "69aeecf3fb1fa9b52efa348c", name: "Spin Bikes", image: spinbike },
-    { id: "69aeed00fb1fa9b52efa348f", name: "Dumbells", image: dumbells},
-    { id: "69aeed05fb1fa9b52efa3492", name: "Yoga Mats & ropes", image: yogamat },
-    { id: "69aeed12fb1fa9b52efa3495", name: "Lifting Barbells", image: bands }
-  ];
+  const backendURL = "http://13.49.230.178:4000";
+
+ const categories = [
+  { id: "69aeecd2fb1fa9b52efa3486", name: "Treadmills", image: `${backendURL}/uploads/treadmills.png` },
+  { id: "69aeece3fb1fa9b52efa3489", name: "Elliptical Trainer", image: `${backendURL}/uploads/elliptical.png` },
+  { id: "69aeecf3fb1fa9b52efa348c", name: "Spin Bikes", image: `${backendURL}/uploads/spinbike.png` },
+  { id: "69aeed00fb1fa9b52efa348f", name: "Dumbells", image: `${backendURL}/uploads/dumbells.png` },
+  { id: "69aeed05fb1fa9b52efa3492", name: "Yoga Mats & ropes", image: `${backendURL}/uploads/yoga-mat.png` },
+  { id: "69aeed12fb1fa9b52efa3495", name: "Lifting Barbells", image: `${backendURL}/uploads/bands.png` },
+];
 
 const openCategory = (id) => {
   navigate(`/category/${id}`);
