@@ -169,13 +169,6 @@ if (token) {
             </button>
           </div>
         </form>
-
-        {/* Optional: Add to Cart button */}
-        <div style={{ textAlign: "center", margin: "10px 0" }}>
-          <button onClick={handleAddToCart} className={styles.signupBtn}>
-            Add to Cart
-          </button>
-        </div>
       </Modal>
     </div>
   );

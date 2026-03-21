@@ -1,22 +1,23 @@
-// CartContext.jsx
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import { toast } from "react-toastify"; // Import toast
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cartId, setCartId] = useState(null);
-  const [pendingCartAction, setPendingCartAction] = useState(null); // NEW
+  const [pendingCartAction, setPendingCartAction] = useState(null);
 
   const fetchCart = async () => {
     const token = localStorage.getItem("token");
     if (!token) return;
 
     try {
-      const res = await axios.get("http://13.49.230.178:4000/api/v1/auth/getCart", { 
-        headers: { Authorization: `Bearer ${token}` } 
-      });
+      const res = await axios.get(
+        "http://13.49.230.178:4000/api/v1/auth/getCart",
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
       setCart(res.data.items || []);
       setCartId(res.data._id || null);
     } catch (err) {
@@ -28,9 +29,9 @@ export const CartProvider = ({ children }) => {
     const token = localStorage.getItem("token");
 
     if (!token) {
-      // Store the attempted action
+      // Store attempted action and show toast
       setPendingCartAction({ product, quantity });
-      alert("Login first to add to cart");
+      toast.info("Login first to add to cart", { position: "top-center", autoClose: 3000 });
       return;
     }
 
@@ -38,42 +39,39 @@ export const CartProvider = ({ children }) => {
       await axios.post(
         "http://13.49.230.178:4000/api/v1/auth/addCart",
         { productId: product._id, quantity },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       fetchCart();
-      setPendingCartAction(null); // clear after successful add
+      setPendingCartAction(null); // clear pending after success
     } catch (err) {
       if (err.response?.status === 401) {
-        // Token expired or invalid
+        // Token expired/invalid → treat as login required
         setPendingCartAction({ product, quantity });
-        alert("Login first to add to cart");
+        toast.info("Login first to add to cart", { position: "top-center", autoClose: 3000 });
         localStorage.removeItem("token"); // optional: clear invalid token
       } else {
         const msg = err.response?.data?.message || err.message;
         console.error("Add to cart error:", msg);
-        alert(`Cannot add to cart: ${msg}`);
+        toast.error(`Cannot add to cart: ${msg}`, { position: "top-center", autoClose: 3000 });
       }
     }
   };
 
-  // Automatically complete pending cart after login
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token && pendingCartAction) {
       addToCart(pendingCartAction.product, pendingCartAction.quantity);
     }
-  }, [localStorage.getItem("token")]); // rerun when token changes
+  }, [localStorage.getItem("token")]);
 
   const increaseQty = async (productId) => {
-    const item = cart.find(i => i.Product._id === productId);
+    const item = cart.find((i) => i.Product._id === productId);
     if (!item) return;
     await addToCart({ _id: productId }, 1);
   };
 
   const decreaseQty = async (productId) => {
-    const item = cart.find(i => i.Product._id === productId);
+    const item = cart.find((i) => i.Product._id === productId);
     if (!item || item.quantity <= 1) return;
     await addToCart({ _id: productId }, -1);
   };
@@ -81,7 +79,7 @@ export const CartProvider = ({ children }) => {
   const removeItem = async (productId) => {
     const token = localStorage.getItem("token");
     if (!token) {
-      alert("Login first to remove items");
+      toast.info("Login first to remove items", { position: "top-center", autoClose: 3000 });
       return;
     }
     try {
@@ -92,13 +90,12 @@ export const CartProvider = ({ children }) => {
       fetchCart();
     } catch (err) {
       console.error("Remove item error:", err.response?.data || err.message);
+      toast.error("Failed to remove item", { position: "top-center", autoClose: 3000 });
     }
   };
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      fetchCart();
-    }
+    if (localStorage.getItem("token")) fetchCart();
   }, []);
 
   return (
