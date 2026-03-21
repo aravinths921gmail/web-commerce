@@ -36,7 +36,7 @@ authrouter.get("/getProductsByCategory/:categoryId", verifyToken, user, getProdu
 authrouter.put("/updateUser/:id",verifyToken, Admin, updateUser);
 authrouter.delete("/deleteUser/:id",verifyToken, Admin, deleteUser);
 
-authrouter.post("/addCart", user, addCart);
+authrouter.post("/addCart",verifyToken, user, addCart);
 authrouter.delete("/deleteCart/:id", verifyToken, user, deleteCart);    
 authrouter.get("/getCart", verifyToken, user, getCart);
 authrouter.delete("/removeCartItem/:productId", verifyToken, user, removeItem);
