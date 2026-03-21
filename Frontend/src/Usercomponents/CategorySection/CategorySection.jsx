@@ -19,9 +19,7 @@ export default function CategorySection() {
   { id: "69aeed12fb1fa9b52efa3495", name: "Lifting Barbells", image: `${backendURL}/uploads/bands.png` },
 ];
 
-const openCategory = (id) => {
-  navigate(`/category/${id}`);
-};
+const openCategory = (id) => { navigate(`/category/${id}`)};
 
   return (
     <div className="category-container">
