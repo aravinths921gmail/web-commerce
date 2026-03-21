@@ -189,7 +189,7 @@ export default function Productfetching({ darkMode = false, categoryId }) {
 
 
 
-            <div className="product-buttons"> <button className="btn-cart" onClick={() => { console.log("Adding product:", product); addToCart(product)}}>Add to Cart</button>
+            <div className="product-buttons"> <button className="btn-cart" onClick={() => {addToCart(product)}}>Add to Cart</button>
 
               <button className="btn-enquiry" onClick={() => Enquire(product)} > Enquiry  </button> </div>
           </Card.Body>
