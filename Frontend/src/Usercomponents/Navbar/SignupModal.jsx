@@ -33,22 +33,22 @@ function SignupModal({ show, handleClose, productId }) {
 const handleAddToCart = async () => {
   const token = localStorage.getItem("token");
 
-  if (!token) {
-    toast.info("Please login first to add items to cart", {
-      position: "top-center",
-      autoClose: 2500,
-    });
-    return;
-  }
+  // ✅ If no token, show toast and stop
+ if (!token) {
+  toast.info("Please login first to add items to cart", { position: "top-center", autoClose: 2500 });
+  setIsLogin(true);   // switch modal to login
+  handleClose(false); // open modal if using state in parent
+  return;
+}
 
+  // ✅ Otherwise, proceed to add to cart
   try {
-    // Send token and allow credentials
     const response = await axios.post(
       "http://13.49.230.178:4000/api/v1/cart/add",
       { productId },
       {
         headers: { Authorization: `Bearer ${token}` },
-        withCredentials: true, // important for cookies
+        withCredentials: true, // ensures cookies are sent if your backend uses them
       }
     );
 
@@ -78,11 +78,13 @@ const handleAddToCart = async () => {
           userdetails
         );
 
-        const token = response.data.token;
-        if (!token) {
-          toast.error("Login failed: No token received");
-          return;
-        }
+       const token = response.data.token;
+if (token) {
+  localStorage.setItem("token", token);
+  toast.success("Login successful!", { position: "top-center", autoClose: 2000 });
+  setuserdetails({ email: "", password: "" });
+  handleClose();
+}
 
         localStorage.setItem("token", token);
         toast.success("Login successful!", { position: "top-center", autoClose: 2000 });
