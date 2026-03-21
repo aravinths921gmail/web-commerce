@@ -30,28 +30,37 @@ function SignupModal({ show, handleClose, productId }) {
   };
 
   // ================= ADD TO CART =================
-  const handleAddToCart = async () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      toast.info("Please login first to add items to cart", {
-        position: "top-center",
-        autoClose: 2500,
-      });
-      return;
-    }
+const handleAddToCart = async () => {
+  const token = localStorage.getItem("token");
 
-    try {
-      const response = await axios.post(
-        "http://13.49.230.178:4000/api/v1/cart/add",
-        { productId },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      toast.success("Item added to cart!", { position: "top-center", autoClose: 2000 });
-    } catch (error) {
-      console.error("Add to cart error:", error.response?.data || error.message);
-      toast.error("Failed to add to cart. Try again.", { position: "top-center", autoClose: 3000 });
-    }
-  };
+  if (!token) {
+    toast.info("Please login first to add items to cart", {
+      position: "top-center",
+      autoClose: 2500,
+    });
+    return;
+  }
+
+  try {
+    // Send token and allow credentials
+    const response = await axios.post(
+      "http://13.49.230.178:4000/api/v1/cart/add",
+      { productId },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+        withCredentials: true, // important for cookies
+      }
+    );
+
+    toast.success("Item added to cart!", { position: "top-center", autoClose: 2000 });
+  } catch (error) {
+    console.error("Add to cart error:", error.response?.data || error.message);
+    toast.error(
+      error.response?.data?.message || "Failed to add to cart. Try again.",
+      { position: "top-center", autoClose: 3000 }
+    );
+  }
+};
 
   // ================= SUBMIT HANDLER =================
   const handleSubmit = async (e) => {
