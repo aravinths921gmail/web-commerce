@@ -68,14 +68,14 @@ export default function Navbars() {
 
   const products = {
     commercial: [
-      { name: "Treadmills", img: "/images/treadmills.png" },
-      { name: "Elliptical Trainer", img: "/images/elliptical.png" },
-      { name: "Spin Bikes", img: "/images/spinbike.png" },
+      { name: "Treadmills", img: "http://13.49.230.178:4000/uploads/treadmills.png" },
+      { name: "Elliptical Trainer", img: "http://13.49.230.178:4000/uploads/elliptical.png" },
+      { name: "Spin Bikes", img: "http://13.49.230.178:4000/uploads/spinbike.png" },
     ],
     home: [
       { name: "Dumbells", img: "http://13.49.230.178:4000/uploads/dumbells.png" },
-      { name: "Yoga Mat & rope", img: "/images/yoga-mat.png" },
-      { name: "Lifting Barbells", img: "/images/bands.png" },
+      { name: "Yoga Mat & rope", img: "http://13.49.230.178:4000/uploads/yoga-mat.png" },
+      { name: "Lifting Barbells", img: "http://13.49.230.178:4000/uploads/bands.png" },
     ],
   };
 
